@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KategoriMitra extends Model
 {
     use HasFactory;
+
+    protected $table ='kategori_mitra';
+    protected $guarded = [];
 }

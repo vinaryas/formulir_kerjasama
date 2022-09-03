@@ -16,7 +16,6 @@ class CreateApprovalTable extends Migration
         Schema::create('approval', function (Blueprint $table) {
             $table->id();
             $table->integer('formulir_head_id');
-            $table->integer('fromulir_detail_id');
             $table->integer('created_by');
             $table->integer('role_last_app');
             $table->integer('role_next_app');

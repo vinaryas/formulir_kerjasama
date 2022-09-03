@@ -12,9 +12,12 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "jeroennoten/laravel-adminlte": "^3.8",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "santigarcor/laratrust": "^7.1"
+        "laravel/ui": "^3.4",
+        "santigarcor/laratrust": "^7.1",
+        "webpatser/laravel-uuid": "3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

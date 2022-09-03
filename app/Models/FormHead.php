@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FormHead extends Model
 {
     use HasFactory;
+
+    protected $table ='form_head';
+    protected $guarded = [];
 }
