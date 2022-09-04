@@ -13,7 +13,7 @@ class CreateFormulirHeadTable extends Migration
      */
     public function up()
     {
-        Schema::create('formulir_head', function (Blueprint $table) {
+        Schema::create('formulir', function (Blueprint $table) {
             $table->id();
             $table->integer('jenis_kerjasama');
             $table->integer('jenis_pengajuan');

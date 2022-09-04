@@ -10,6 +10,7 @@ use App\Services\support\RencanaFormalisasiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Webpatser\Uuid\Uuid;
 
 class FormController extends Controller
 {
@@ -31,9 +32,10 @@ class FormController extends Controller
 
     public function store(Request $request){
         DB::beginTransaction();
+        $nextApp = formService::getNextApp(Auth::user()->roles->first()->id);
 
         try{
-            $form = [
+            $data = [
                 'jenis_kerjasama'=> $request->jenisKerjasama,
                 'jenis_pengajuan'=> $request->jenisPengajuan,
                 'nama_mitra_kerjasama'=> $request->namaMitraKerjasama,
@@ -46,16 +48,29 @@ class FormController extends Controller
                 'no_telp'=> $request->noTelp,
                 'email'=> $request->email,
                 'lingkup_kerjasama'=> $request->lingkupKerjasama,
-                'rencana_kegiatan'=> $request->rencanaKerjasama,
+                'rencana_kegiatan'=> $request->rencanaKegiatan,
                 'rencana_formalisasi'=> $request->rencanaFormalisasi,
                 'tgl'=> $request->tgl,
                 'tempat'=> $request->tempat,
-                'uuid'=> $request->uuid,
                 'file'=> $request->file,
-                'path'=> $request->path,
+                'path'=> 'xampp/htdocs/formulir_pengajuan/storage/app/file/',
             ];
 
-            $storeForm = FormHeadService::store($form);
+            $data['uuid'] = (string)Uuid::generate();
+            if ($request->hasFile('file')) {
+                $data['file'] = $request->file->getClientOriginalName();
+                $request->file->storeAs('file', $data['file']);
+            }
+
+            $storeData = FormHeadService::store($data);
+
+            $dataApp = [
+                'role_last_app' => Auth::user()->id,
+                'role_next_app' => $nextApp,
+                'status'=>2
+            ];
+
+            $updateStatus = ApprovalService::store($dataUpdate, $request->form_id);
 
         }catch (\Throwable $th){
             dd($th);
