@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\support\ApprovalService;
 use App\Services\support\FormHeadService;
 use App\Services\support\JenisKerjasamaService;
 use App\Services\support\JenisPengajuanService;
@@ -32,7 +33,7 @@ class FormController extends Controller
 
     public function store(Request $request){
         DB::beginTransaction();
-        $nextApp = formService::getNextApp(Auth::user()->roles->first()->id);
+        $nextApp = ApprovalService::getNextApp(Auth::user()->roles->first()->id);
 
         try{
             $data = [
@@ -65,12 +66,14 @@ class FormController extends Controller
             $storeData = FormHeadService::store($data);
 
             $dataApp = [
-                'role_last_app' => Auth::user()->id,
+                'formulir_id' => $storeData->id,
+                'created_by' => Auth::user()->id,
+                'role_last_app' => Auth::user()->roles->id,
                 'role_next_app' => $nextApp,
-                'status'=>2
+                'status'=>0
             ];
 
-            $updateStatus = ApprovalService::store($dataUpdate, $request->form_id);
+            $updateStatus = ApprovalService::store($dataApp);
 
         }catch (\Throwable $th){
             dd($th);

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FormController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/form', [FormController::class, 'index'])->name('form.index');
+// Route::get('/form/detail/{id}', [formController::class, 'detail'])->name('form.detail');
+Route::get('/form/create/', [formController::class, 'create'])->name('form.create');
+Route::post('/form/store', [formController::class, 'store'])->name('form.store');
+
+// Route::group(['middleware' => 'permission:approve'], function (){
+//     Route::get('/approval', [approvalController::class, 'index'])->name('approval.index');
+//     Route::get('/approval/create/{id}', [approvalController::class, 'create'])->name('approval.create');
+//     Route::post('/approval/store', [approvalController::class, 'store'])->name('approval.store');
+// });
