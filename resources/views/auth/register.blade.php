@@ -1,1 +1,1 @@
-@extends('adminlte::auth.register')
+@extends('vendor.Adminlte.auth.register')
