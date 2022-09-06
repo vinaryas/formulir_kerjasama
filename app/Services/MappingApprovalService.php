@@ -4,24 +4,24 @@ namespace App\Services;
 
 use App\Models\MappingApp;
 
-class MappingApprovalFormHeadService
+class MappingApprovalService
 {
-    private $MappingApprovalFormHead;
+    private $MappingApp;
 
-    public function __construct(MappingApp $MappingApprovalFormHead)
+    public function __construct(MappingApp $MappingApp)
     {
-        $this->MappingApprovalFormHead = $MappingApprovalFormHead;
+        $this->MappingApp = $MappingApp;
     }
 
     public function getByTypeRoleId($roleId, $regionId)
     {
-        return $this->MappingApprovalFormHead
+        return $this->MappingApp
                     ->where('role_id', $roleId);
     }
 
     public function getByPosition($position, $regionId)
     {
-        return $this->MappingApprovalFormHead
+        return $this->MappingApp
                     ->where('position', $position);
     }
 }

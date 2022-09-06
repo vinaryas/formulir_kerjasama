@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\support\ApprovalService;
-use App\Services\support\FormHeadService;
+use App\Services\support\FormService;
 use App\Services\support\JenisKerjasamaService;
 use App\Services\support\JenisPengajuanService;
 use App\Services\support\KategoriMitraService;
@@ -16,7 +16,7 @@ use Webpatser\Uuid\Uuid;
 class FormController extends Controller
 {
     public function index(){
-        $form = FormHeadService::all()->get();
+        $form = FormService::all()->get();
 
         return view('', compact('form'));
     }
@@ -63,7 +63,7 @@ class FormController extends Controller
                 $request->file->storeAs('file', $data['file']);
             }
 
-            $storeData = FormHeadService::store($data);
+            $storeData = FormService::store($data);
 
             $dataApp = [
                 'formulir_id' => $storeData->id,

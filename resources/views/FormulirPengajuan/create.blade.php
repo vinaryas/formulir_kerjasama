@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<form class="card" action="{{ route('form_pembuatan.store') }}" method="POST">
+<form class="card" action="{{ route('form_pembuatan.store') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="card-body">
         <input type="hidden" value="{{ $forms->created_by }}" name="user_id">
@@ -79,10 +79,15 @@
             </div>
             <div class="col-md-3">
                 <label> Tanggal </label>
-                <input type="text" name="tgl" class="form-control">
-            </div><div class="col-md-3">
+                <input type="date" name="tgl" class="form-control">
+            </div>
+            <div class="col-md-3">
                 <label> Tempat </label>
                 <input type="text" name="tempat" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label> Upload File: </label>
+                <input type="file" name="file" class="form-control">
             </div>
         </div>
         <div class="float-left">

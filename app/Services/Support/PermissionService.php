@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\support;
+namespace App\Services\Support;
 
-use App\Services\FormHeadService as SupportService;
+use App\Services\PermissionService as SupportService;
 use Illuminate\Support\Facades\Facade;
 
-class FormHeadService extends Facade
+class PermissionService extends Facade
 {
 	/**
      * Get the registered name of the component.

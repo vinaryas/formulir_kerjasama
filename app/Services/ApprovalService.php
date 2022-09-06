@@ -2,26 +2,27 @@
 
 namespace App\Services;
 
-use App\Models\FormHead;
+use App\Models\Approval;
+
 use App\Services\Support\MappingApprovalService;
 
-class FormHeadService
+class ApprovalService
 {
-   private $FormHead;
+   private $Approval;
 
-   public function __construct(FormHead $FormHead)
+   public function __construct(Approval $Approval)
    {
-        $this->FormHead = $FormHead;
+        $this->Approval = $Approval;
    }
 
    public function all()
    {
-        return $this->FormHead->query();
+        return $this->Approval->query();
    }
 
    public function store($data)
    {
-        return $this->FormHead->create($data);
+        return $this->Approval->create($data);
    }
 
    public function getNextApp($roleId)
@@ -33,5 +34,5 @@ class FormHeadService
        return ($nextPosition != null) ? $nextPosition->role_id : 0;
    }
 
-   
+
 }
