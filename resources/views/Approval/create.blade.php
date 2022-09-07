@@ -10,7 +10,7 @@
     {{ csrf_field() }}
     <div class="card-body">
         <input type="hidden" value="{{ $forms->created_by }}" name="user_id">
-        <input type="hidden" value="{{ $forms->id }}" name="form_head_id">
+        <input type="hidden" value="{{ $forms->id }}" name="form_id">
         <input type="hidden" value="{{ $forms->role_last_app }}" name="role_last_app">
         <div class="row">
             <div class="col-md-6">

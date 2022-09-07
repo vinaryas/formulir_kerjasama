@@ -11,14 +11,15 @@ use App\Services\support\RencanaFormalisasiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Webpatser\Uuid\Uuid;
 
 class FormController extends Controller
 {
     public function index(){
-        $form = FormService::all()->get();
+        $forms = FormService::all()->get();
 
-        return view('', compact('form'));
+        return view('Form.index', compact('forms'));
     }
 
     public function create(){
@@ -28,7 +29,7 @@ class FormController extends Controller
         $kategoriMitra = KategoriMitraService::all()->get();
         $rencanaFormalisasi = RencanaFormalisasiService::all()->get();
 
-        return view('', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'kategoriMitra', 'rencanaFormalisasi'));
+        return view('Form.create', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'kategoriMitra', 'rencanaFormalisasi'));
     }
 
     public function store(Request $request){
@@ -75,9 +76,15 @@ class FormController extends Controller
 
             $updateStatus = ApprovalService::store($dataApp);
 
+            DB::commit();
+
+            Alert::success('succes', 'form berhasil disimpan');
+            return redirect()->route('form.index');
+
         }catch (\Throwable $th){
             dd($th);
-            return redirect()->route('');
+            // Alert::alert('warning!!', 'form gagal disimpan');
+            return redirect()->route('form.index');
         }
     }
 }

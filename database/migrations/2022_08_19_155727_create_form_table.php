@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormulirTable extends Migration
+class CreateFormTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFormulirTable extends Migration
      */
     public function up()
     {
-        Schema::create('formulir', function (Blueprint $table) {
+        Schema::create('form', function (Blueprint $table) {
             $table->id();
             $table->integer('jenis_kerjasama');
             $table->integer('jenis_pengajuan');

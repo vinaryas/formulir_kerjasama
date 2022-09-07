@@ -6,23 +6,24 @@
 @stop
 
 @section('content')
-<form class="card" action="{{ route('form_pembuatan.store') }}" method="POST" enctype="multipart/form-data">
+<form class="card" action="{{ route('form.store') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="card-body">
-        <input type="hidden" value="{{ $forms->created_by }}" name="user_id">
-        <input type="hidden" value="{{ $forms->id }}" name="form_head_id">
-        <input type="hidden" value="{{ $forms->role_last_app }}" name="role_last_app">
         <div class="row">
             <div class="col-md-6">
                 <label> Jenis Kerjasama </label>
                 <select  name="jenisKerjasama" class="form-control">
-                    <option value="{{ $jenisKerjasama->id }}">{{ $jenisKerjasama->kerjasama }}</option>
+                    @foreach ($jenisKerjasama as $kerjasama)
+                    <option value="{{ $kerjasama->id }}">{{ $kerjasama->kerjasama }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6">
                 <label> Jenis Pengajuan </label>
                 <select  name="jenisPengajuan" class="form-control">
-                    <option value="{{ $jenisPengajuan->id }}">{{ $jenisPengajuan->pengajuan }}</option>
+                    @foreach ($jenisPengajuan as $pengajuan)
+                    <option value="{{ $pengajuan->id }}">{{ $pengajuan->pengajuan }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6">
@@ -36,7 +37,9 @@
             <div class="col-md-6">
                 <label> Kategori Mitra </label>
                 <select  name="kategoriMitra" class="form-control">
-                    <option value="{{ $kategoriMitra->id }}">{{ $kategoriMitra->store->name }}</option>
+                    @foreach ($kategoriMitra as $kategori)
+                    <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6">
@@ -74,7 +77,9 @@
             <div class="col-md-6">
                 <label> Rencana Formalisasi </label>
                 <select  name="rencanaFormalisasi" class="form-control">
-                    <option value="{{ $rencanaFormalisasi->id }}">{{ $rencanaFormalisasi->rencana }}</option>
+                    @foreach ($rencanaFormalisasi as $rencana)
+                    <option value="{{ $rencana->id }}">{{ $rencana->rencana }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-3">
@@ -90,13 +95,15 @@
                 <input type="file" name="file" class="form-control">
             </div>
         </div>
-        <div class="float-left">
-            <a href="{{ route('form_pembuatan.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Batal </a>
-        </div>
-        <div class="float-right">
-            <button type="submit" class="btn btn-success" onclick="this.form.submit(); this.disabled = true; this.value = 'Submitting the form';">
-                <i class="fas fa-save"></i> Simpan
-            </button>
+        <div class="card-footer">
+            <div class="float-left">
+                <a href="{{ route('form.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Batal </a>
+            </div>
+            <div class="float-right">
+                <button type="submit" class="btn btn-success" onclick="this.form.submit(); this.disabled = true; this.value = 'Submitting the form';">
+                    <i class="fas fa-save"></i> Simpan
+                </button>
+            </div>
         </div>
     </div>
 </form>
