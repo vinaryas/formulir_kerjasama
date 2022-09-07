@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::group(['prefix' => 'form'], function(){
 
 
 Route::group(['prefix' => 'approval'], function(){
-    Route::get('/approval', [approvalController::class, 'index'])->name('approval.index');
-    Route::get('/approval/create/{id}', [approvalController::class, 'create'])->name('approval.create');
-    Route::post('/approval/store', [approvalController::class, 'store'])->name('approval.store');
+    Route::get('/approval', [ApprovalController::class, 'index'])->name('approval.index');
+    Route::get('/approval/detail/{id}', [ApprovalController::class, 'detail'])->name('approval.detail');
+    Route::post('/approval/store', [ApprovalController::class, 'store'])->name('approval.store');
 });

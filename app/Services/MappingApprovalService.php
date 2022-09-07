@@ -13,13 +13,13 @@ class MappingApprovalService
         $this->MappingApp = $MappingApp;
     }
 
-    public function getByTypeRoleId($roleId, $regionId)
+    public function getByTypeRoleId($roleId)
     {
         return $this->MappingApp
                     ->where('role_id', $roleId);
     }
 
-    public function getByPosition($position, $regionId)
+    public function getByPosition($position)
     {
         return $this->MappingApp
                     ->where('position', $position);

@@ -14,23 +14,19 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ApprovalController extends Controller
 {
     public function index(){
-        $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
-        if(Auth::user()->all_store == 'y'){
-            $forms = FormService::getApprovePembuatanFilter($roleUsers->role_id)->get();
-        }else{
-            $forms = FormService::getApprovePembuatanFilterByStore($roleUsers->role_id, UserService::authStoreArray())->get();
-        }
+        $forms = FormService::all()->get();
 
-        return view('ApprovalPembuatan.index', compact('forms'));
+        return view('Approval.index', compact('forms'));
     }
 
     public function detail($id){
         $forms = FormService::getById($id)->first();
 
-        return view('ApprovalPembuatan.create', compact('forms'));
+
+        return view('Approval.detail', compact('forms'));
     }
 
-    public function approve(Request $request){
+    public function store(Request $request){
         DB::beginTransaction();
         $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
         $nextApp = ApprovalService::getNextApp($roleUsers->role_id, Auth::user()->region_id);

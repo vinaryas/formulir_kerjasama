@@ -8,6 +8,7 @@ use App\Services\support\JenisKerjasamaService;
 use App\Services\support\JenisPengajuanService;
 use App\Services\support\KategoriMitraService;
 use App\Services\support\RencanaFormalisasiService;
+use App\Services\Support\RoleUserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +35,8 @@ class FormController extends Controller
 
     public function store(Request $request){
         DB::beginTransaction();
-        $nextApp = ApprovalService::getNextApp(Auth::user()->roles->first()->id);
+        $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
+        $nextApp = ApprovalService::getNextApp($roleUsers->role_id, Auth::user()->region_id);
 
         try{
             $data = [
@@ -69,7 +71,7 @@ class FormController extends Controller
             $dataApp = [
                 'formulir_id' => $storeData->id,
                 'created_by' => Auth::user()->id,
-                'role_last_app' => Auth::user()->roles->id,
+                'role_last_app' => $roleUsers->role_id,
                 'role_next_app' => $nextApp,
                 'status'=>0
             ];

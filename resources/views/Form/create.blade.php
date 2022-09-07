@@ -72,7 +72,7 @@
             </div>
             <div class="col-md-6">
                 <label> Rencana Kegiatan </label>
-                <input type="text" name="rencanaKerjasama" class="form-control">
+                <input type="text" name="rencanaKegiatan" class="form-control">
             </div>
             <div class="col-md-6">
                 <label> Rencana Formalisasi </label>

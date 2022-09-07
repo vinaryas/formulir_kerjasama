@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'ID Management')
+@section('title', 'Form')
 
 @section('content_header')
 @stop

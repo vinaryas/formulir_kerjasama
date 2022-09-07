@@ -22,4 +22,9 @@ class FormService
    {
         return $this->Form->create($data);
    }
+
+   public function getById($id)
+    {
+        return $this->Form->where('id', $id);
+    }
 }
