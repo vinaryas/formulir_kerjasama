@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\MappingApp as ModelsMappingApp;
+use App\Models\MappingApp;
 use Illuminate\Database\Seeder;
 
-class MappingApp extends Seeder
+class MappingAppSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -53,7 +53,7 @@ class MappingApp extends Seeder
         ];
 
         foreach ($MappingApps as $MappingApp) {
-            ModelsMappingApp::updateOrCreate([
+            MappingApp::updateOrCreate([
                 'id' => $MappingApp['id']
             ], $MappingApp);
         }

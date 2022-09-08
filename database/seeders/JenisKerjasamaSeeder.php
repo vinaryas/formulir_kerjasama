@@ -19,13 +19,13 @@ class JenisKerjasamaSeeder extends Seeder
                 'id' => 1,
                 'kerjasama' => 'Bipartit',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 2,
                 'kerjasama' => 'Tripartit',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

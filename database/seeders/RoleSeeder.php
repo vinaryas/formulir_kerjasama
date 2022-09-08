@@ -17,6 +17,13 @@ class RoleSeeder extends Seeder
         $Roles = [
             [
                 'id' => 1,
+                'name' => 'administrator',
+                'display_name' => 'Administrator',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 2,
                 'name' => 'unit',
                 'display_name' => 'Unit',
                 'description' => 'unit_pic',
@@ -24,7 +31,7 @@ class RoleSeeder extends Seeder
                 'update_at' => now(),
             ],
             [
-                'id' => 2,
+                'id' => 3,
                 'name' => 'reviewer',
                 'display_name' => 'Reviewer',
                 'description' => 'reviewer',
@@ -32,7 +39,7 @@ class RoleSeeder extends Seeder
                 'update_at' => now(),
             ],
             [
-                'id' => 3,
+                'id' => 4,
                 'name' => 'kepala_unit',
                 'display_name' => 'Kepala Unit',
                 'description' => 'kepala_unit',
@@ -40,7 +47,7 @@ class RoleSeeder extends Seeder
                 'update_at' => now(),
             ],
             [
-                'id' => 4,
+                'id' => 5,
                 'name' => 'wakil_dekan',
                 'display_name' => 'Wakil Dekan',
                 'description' => 'wakil_dekan',
@@ -48,7 +55,7 @@ class RoleSeeder extends Seeder
                 'update_at' => now(),
             ],
             [
-                'id' => 5,
+                'id' => 6,
                 'name' => 'dekan',
                 'display_name' => 'Dekan',
                 'description' => 'dekan',
