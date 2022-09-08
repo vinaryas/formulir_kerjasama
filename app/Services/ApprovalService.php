@@ -25,6 +25,11 @@ class ApprovalService
         return $this->Approval->create($data);
    }
 
+   public function update($data, $formId)
+    {
+        return $this->Approval->where('form_id', $formId)->update($data);
+    }
+
    public function getNextApp($roleId)
    {
        $thisPosition = MappingApprovalService::getByTypeRoleId($roleId)->first()->position;

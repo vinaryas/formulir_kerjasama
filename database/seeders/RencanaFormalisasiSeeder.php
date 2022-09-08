@@ -19,13 +19,13 @@ class RencanaFormalisasiSeeder extends Seeder
                 'id' => 1,
                 'rencana' => 'Desk to desk',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 2,
                 'rencana' => 'Ceremonial',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

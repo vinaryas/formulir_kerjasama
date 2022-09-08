@@ -28,7 +28,7 @@ class RoleSeeder extends Seeder
                 'display_name' => 'Unit',
                 'description' => 'unit_pic',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 3,
@@ -36,7 +36,7 @@ class RoleSeeder extends Seeder
                 'display_name' => 'Reviewer',
                 'description' => 'reviewer',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 4,
@@ -44,7 +44,7 @@ class RoleSeeder extends Seeder
                 'display_name' => 'Kepala Unit',
                 'description' => 'kepala_unit',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 5,
@@ -52,7 +52,7 @@ class RoleSeeder extends Seeder
                 'display_name' => 'Wakil Dekan',
                 'description' => 'wakil_dekan',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 6,
@@ -60,7 +60,7 @@ class RoleSeeder extends Seeder
                 'display_name' => 'Dekan',
                 'description' => 'dekan',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

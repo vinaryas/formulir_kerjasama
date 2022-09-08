@@ -19,13 +19,13 @@ class JenisPengajuanSeeder extends Seeder
                 'id' => 1,
                 'pengajuan' => 'Baru',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id' => 2,
                 'pengajuan' => 'Perpanjang',
                 'created_at' => now(),
-                'update_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

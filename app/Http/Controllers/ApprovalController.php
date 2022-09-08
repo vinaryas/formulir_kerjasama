@@ -36,37 +36,37 @@ class ApprovalController extends Controller
                 $roleNextApp = [
                     'role_last_app' => $roleUsers->role_id,
                     'role_next_app' => $nextApp,
-                    'status'=> config('setting_app.status_approval.approve'),
+                    'status'=> 1,
                 ];
-                $updateStatus = ApprovalService::update($roleNextApp);
+                $updateStatus = ApprovalService::update($roleNextApp, $request->form_id);
                 DB::commit();
 
                 Alert::success('Approved', 'form has been approved');
-                return redirect()->route('approval_pembuatan.index');
+                return redirect()->route('approval.index');
             }catch(\Throwable $th){
                 DB::rollback();
                 dd($th->getMessage());
                 Alert::error('Error!!',);
-                return redirect()->route('approval_pembuatan.index');
+                return redirect()->route('approval.index');
             }
         }elseif (isset($_POST["disapprove"])){
             try{
                 $roleNextApp = [
                     'role_last_app' => $roleUsers->role_id,
                     'role_next_app' => 0,
-                    'status'=> config('setting_app.status_approval.disapprove'),
+                    'status'=> 2,
                 ];
-                $updateStatus = ApprovalService::update($roleNextApp);
+                $updateStatus = ApprovalService::update($roleNextApp, $request->form_id);
 
                 DB::commit();
 
                 Alert::warning('Disapproved', 'form has been disapproved');
-                return redirect()->route('approval_pembuatan.index');
+                return redirect()->route('approval.index');
             }catch (\Throwable $th) {
                 DB::rollback();
                 dd($th->getMessage());
                 Alert::error('Error!!',);
-                return redirect()->route('approval_pembuatan.index');
+                return redirect()->route('approval.index');
             }
         }
     }

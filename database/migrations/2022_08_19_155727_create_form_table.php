@@ -45,6 +45,6 @@ class CreateFormTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formulir_head');
+        Schema::dropIfExists('form');
     }
 }
