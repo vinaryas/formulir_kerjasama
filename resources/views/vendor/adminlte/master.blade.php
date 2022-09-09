@@ -104,8 +104,57 @@
         @endif
     @endif
 
+	@include('sweetalert::alert')
+
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
+
+	<script>
+		$(document).ready(function () {
+			$('.select2').select2({
+				placeholder: '...',
+				allowClear: true
+			});
+		});
+
+		function uang(maxValue = 9999999999999999) {
+			$('.uang').inputmask("numeric", {
+				radixPoint: ".",
+				groupSeparator: ".",
+				digits: 1000,
+				autoGroup: true,
+				prefix: '',
+				rightAlign: false,
+				allowMinus:false,
+				max:maxValue,
+				removeMaskOnSubmit:true,
+			});
+		}
+		
+		function toast(data, modal_id = ''){
+			
+			const Toast = Swal.mixin({
+				toast: true,
+				position: data.position,
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				onOpen: (toast) => {
+					toast.addEventListener('mouseenter', Swal.stopTimer)
+					toast.addEventListener('mouseleave', Swal.resumeTimer)
+				}
+			})
+			
+			Toast.fire({
+				icon: data.icon,
+				title: data.text
+			})
+			
+			if (modal_id) {
+				$('#'+modal_id).modal('hide');
+			}
+		}
+	</script>
 
 </body>
 

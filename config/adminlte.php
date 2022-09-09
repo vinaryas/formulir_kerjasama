@@ -186,7 +186,7 @@ return [
     |
     */
 
-    'classes_body' => '',
+    'classes_body' => 'text-sm',
     'classes_brand' => '',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
@@ -256,9 +256,9 @@ return [
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'register_url' => false,
+    'password_reset_url' => 'false',
+    'password_email_url' => false,
     'profile_url' => false,
 
     /*
@@ -294,10 +294,6 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => false,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
     ],
@@ -315,14 +311,14 @@ return [
     */
 
     'filters' => [
-      // JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
-      JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
-      JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
-      JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-      JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-      JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
-      JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
-      App\MyMenu\MyMenuFilter::class,
+        // JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+		App\MyMenu\MyMenuFilter::class,
     ],
 
     /*
@@ -344,17 +340,17 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => 'vendor/datatable/jquery.dataTables.min.js',
+                    'location' => 'vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => 'vendor/datatable/dataTables.bootstrap4.min.js',
+                    'location' => 'vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => true,
-                    'location' => 'vendor/datatable/dataTables.bootstrap4.css',
+                    'location' => 'vendor/datatables/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],
@@ -364,12 +360,12 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' =>  'vendor/select2/select2.min.js',
+                    'location' => 'vendor/select2/js/select2.full.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => true,
-                    'location' => 'vendor/select2/select2.css',
+                    'location' => 'vendor/select2/css/select2.min.css',
                 ],
             ],
         ],
@@ -384,12 +380,12 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],
