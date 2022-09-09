@@ -21,7 +21,7 @@
                     <th> Nama Mitra Kerjasama </th>
                     <th> Kategori Mitra </th>
                     <th> PIC Mitra </th>
-                    <th> File </th>
+                    <th> File Pengajuan </th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +33,11 @@
                         <td>{{ $form->nama_mitra_kerjasama }}</td>
                         <td>{{ $form->kategori_mitra }}</td>
                         <td>{{ $form->pic_mitra }}</td>
-                        <td>{{ $form->file }}</td>
+                        <td>
+							<center>
+								<a href="{{ asset('storage/file/' . $form->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+							</center>
+						</td>
                     </tr>
                 @endforeach
             </tbody>
