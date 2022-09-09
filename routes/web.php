@@ -60,15 +60,15 @@ Route::group(['middleware' => []], function () {
 });
 
 Route::group(['prefix' => 'form'], function(){
-    Route::get('/form', [FormController::class, 'index'])->name('form.index');
-//  Route::get('/form/detail/{id}', [formController::class, 'detail'])->name('form.detail');
-    Route::get('/form/create/', [formController::class, 'create'])->name('form.create');
-    Route::post('/form/store', [formController::class, 'store'])->name('form.store');
+    Route::get('', [FormController::class, 'index'])->name('form.index');
+//  Route::get('//detail/{id}', [formController::class, 'detail'])->name('form.detail');
+    Route::get('/create', [formController::class, 'create'])->name('form.create');
+    Route::post('/store', [formController::class, 'store'])->name('form.store');
 });
 
 
 Route::group(['prefix' => 'approval'], function(){
-    Route::get('/approval', [ApprovalController::class, 'index'])->name('approval.index');
-    Route::get('/approval/detail/{id}', [ApprovalController::class, 'detail'])->name('approval.detail');
-    Route::post('/approval/store', [ApprovalController::class, 'store'])->name('approval.store');
+    Route::get('', [ApprovalController::class, 'index'])->name('approval.index');
+    Route::get('/detail/{id}', [ApprovalController::class, 'detail'])->name('approval.detail');
+    Route::post('/store', [ApprovalController::class, 'store'])->name('approval.store');
 });
