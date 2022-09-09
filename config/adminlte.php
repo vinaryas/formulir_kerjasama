@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Kerjasama Kedoteran Warmadewa',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Pengajuan</b> Kerjasama',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -257,7 +257,7 @@ return [
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => false,
-    'password_reset_url' => 'false',
+    'password_reset_url' => false,
     'password_email_url' => false,
     'profile_url' => false,
 

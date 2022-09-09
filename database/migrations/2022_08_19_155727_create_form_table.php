@@ -18,12 +18,12 @@ class CreateFormTable extends Migration
             $table->integer('jenis_kerjasama');
             $table->integer('jenis_pengajuan');
             $table->string('nama_mitra_kerjasama');
-            $table->string('alamat_mitra_kerjasama');
-            $table->integer('kategori_mitra');
+            $table->string('alamat_mitra_kerjasama')->nullable();
+            $table->integer('kategori_mitra')->nullable();
             $table->string('pic_mitra');
-            $table->string('nama');
-            $table->string('nama_unit');
-            $table->string('jabatan');
+            $table->string('nama')->nullable();
+            $table->string('nama_unit')->nullable();
+            $table->string('jabatan')->nullable();
             $table->string('no_telp');
             $table->string('email');
             $table->string('lingkup_kerjasama');

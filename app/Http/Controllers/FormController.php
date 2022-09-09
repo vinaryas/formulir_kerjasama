@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\StoreFile;
 use App\Services\support\ApprovalService;
 use App\Services\support\FormService;
 use App\Services\support\JenisKerjasamaService;
@@ -12,8 +13,8 @@ use App\Services\Support\RoleUserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
-use Webpatser\Uuid\Uuid;
 
 class FormController extends Controller
 {
@@ -39,37 +40,17 @@ class FormController extends Controller
         $nextApp = ApprovalService::getNextApp($roleUsers->role_id, Auth::user()->region_id);
 
         try{
-            $data = [
-                'jenis_kerjasama'=> $request->jenisKerjasama,
-                'jenis_pengajuan'=> $request->jenisPengajuan,
-                'nama_mitra_kerjasama'=> $request->namaMitraKerjasama,
-                'alamat_mitra_kerjasama'=> $request->alamatMitraKerjasama,
-                'kategori_mitra'=> $request->kategoriMitra,
-                'pic_mitra'=> $request->picMitra,
-                'nama'=> $request->nama,
-                'nama_unit'=> $request->namaUnit,
-                'jabatan'=> $request->jabatan,
-                'no_telp'=> $request->noTelp,
-                'email'=> $request->email,
-                'lingkup_kerjasama'=> $request->lingkupKerjasama,
-                'rencana_kegiatan'=> $request->rencanaKegiatan,
-                'rencana_formalisasi'=> $request->rencanaFormalisasi,
-                'tgl'=> $request->tgl,
-                'tempat'=> $request->tempat,
-                'file'=> $request->file,
-                'path'=> 'xampp/htdocs/formulir_pengajuan/storage/app/file/',
-            ];
+			$allowedfileExtension = ['pdf', 'doc', 'docx'];
+			$file = StoreFile::storeFile($request->file_kerjasama, config('kerjasama.file_path'), $allowedfileExtension);
 
-            $data['uuid'] = (string)Uuid::generate();
-            if ($request->hasFile('file')) {
-                $data['file'] = $request->file->getClientOriginalName();
-                $request->file->storeAs('file', $data['file']);
-            }
+			$request->request->add([
+				'file' => $file['name']
+			]);
 
-            $storeData = FormService::store($data);
+            $storeData = FormService::store($request->except('_token', 'file_kerjasama'));
 
             $dataApp = [
-                'formulir_id' => $storeData->id,
+                'form_id' => $storeData->id,
                 'created_by' => Auth::user()->id,
                 'role_last_app' => $roleUsers->role_id,
                 'role_next_app' => $nextApp,

@@ -26,7 +26,6 @@ class LaratrustSetupTables extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->bigIncrements('id');
 			$table->integer('parent_id');
-            $table->integer('parent_id');
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();

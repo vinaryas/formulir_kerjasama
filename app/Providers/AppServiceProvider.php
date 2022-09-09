@@ -33,31 +33,20 @@ class AppServiceProvider extends ServiceProvider
                 'active' => ['home'],
             ]);
 
-            $event->menu->add([
-                'text' => 'Form',
-                'icon' => 'fas fa-layer-group',
-                'submenu' => [
-                    [
-                        'text' => 'Pembuatan ID',
-                        'url' => route('form.index'),
-                        'icon' => 'fas fa-file-alt',
-                        'active' => ['form*'],
-                    ],
-                ],
+			$event->menu->add([
+                'text' => 'Pengajuan',
+                'url' => route('form.index'),
+                'icon' => 'fas fa-file-alt',
+                'active' => ['form*'],
             ]);
 
-            $event->menu->add([
-                'text' => 'Approval',
-                'icon' => '	fas fa-file-signature',
-                'submenu' => [
-                    [
-                        'text' => 'Dalam Negeri',
-                        'url' => route('approval.index'),
-                        'icon' => 'fas fa-file-signature',
-                        'active' => ['approval'],
-                    ],
-                ],
+			$event->menu->add([
+                'text' => 'Persetujuan',
+                'url' => route('approval.index'),
+                'icon' => 'fas fa-file-signature',
+                'active' => ['approval*'],
             ]);
+
         });
     }
 }
