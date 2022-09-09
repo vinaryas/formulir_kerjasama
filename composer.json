@@ -18,7 +18,7 @@
         "laravel/ui": "^3.4",
         "realrashid/sweet-alert": "^5.1",
         "santigarcor/laratrust": "^7.1",
-        "yajra/laravel-datatables-oracle": "^9.0"
+        "webpatser/laravel-uuid": "3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",

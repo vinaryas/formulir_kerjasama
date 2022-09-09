@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PermissionRole extends Model
 {
@@ -23,5 +23,4 @@ class PermissionRole extends Model
             WHERE a.parent_id = {$parent_id}
         "));
     }
-
 }

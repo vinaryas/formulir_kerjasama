@@ -14,16 +14,60 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = [
+        $Roles = [
             [
                 'id' => 1,
                 'name' => 'administrator',
                 'display_name' => 'Administrator',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
+            [
+                'id' => 2,
+                'name' => 'unit',
+                'display_name' => 'Unit',
+                'description' => 'unit_pic',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 3,
+                'name' => 'reviewer',
+                'display_name' => 'Reviewer',
+                'description' => 'reviewer',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 4,
+                'name' => 'kepala_unit',
+                'display_name' => 'Kepala Unit',
+                'description' => 'kepala_unit',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 5,
+                'name' => 'wakil_dekan',
+                'display_name' => 'Wakil Dekan',
+                'description' => 'wakil_dekan',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'id' => 6,
+                'name' => 'dekan',
+                'display_name' => 'Dekan',
+                'description' => 'dekan',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
-        Role::upsert($roles, ['id'], ['name', 'display_name']);
+        foreach ($Roles as $Role) {
+            Role::updateOrCreate([
+                'id' => $Role['id']
+            ], $Role);
+        }
     }
 }

@@ -1,12 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Approval')
+@section('title', 'Form')
 
 @section('content_header')
 @stop
 
 @section('content')
 <div class="card">
+    <div class="card-header">
+        <a href="{{ route('form.create') }}" class="btn btn-info"><i class="fas fa-file"> <b> Buat Form </b> </i></a>
+    </div>
     <div class="card-body">
         <table class="table table-responsive table-bordered table-striped table-sm" id="t_periksa" style="max-width: 100%">
             <thead>
@@ -29,7 +32,6 @@
                     <th> Tanggal </th>
                     <th> Tempat </th>
                     <th> File </th>
-                    <th> Approval </th>
                 </tr>
             </thead>
             <tbody>
@@ -53,9 +55,6 @@
                         <td>{{ $form->tgl }}</td>
                         <td>{{ $form->tempat }}</td>
                         <td>{{ $form->file }}</td>
-                        <td><a href="{{ route('approval.detail', $form->id) }}"
-                            class="btn btn-info btn-sm"> Detail <i class="fas fa-angle-right"></i>
-                        </a></td>
                     </tr>
                 @endforeach
             </tbody>

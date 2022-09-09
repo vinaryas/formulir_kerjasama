@@ -4,6 +4,9 @@ use App\Http\Controllers\Rbac\PermissionController;
 use App\Http\Controllers\Rbac\PermissionRoleController;
 use App\Http\Controllers\Rbac\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\FormController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,4 +57,18 @@ Route::group(['middleware' => []], function () {
         Route::post('permission_role', 'update')->name('update');
         Route::get('permission_role/list/{role}', 'list')->name('list');
     });
+});
+
+Route::group(['prefix' => 'form'], function(){
+    Route::get('/form', [FormController::class, 'index'])->name('form.index');
+//  Route::get('/form/detail/{id}', [formController::class, 'detail'])->name('form.detail');
+    Route::get('/form/create/', [formController::class, 'create'])->name('form.create');
+    Route::post('/form/store', [formController::class, 'store'])->name('form.store');
+});
+
+
+Route::group(['prefix' => 'approval'], function(){
+    Route::get('/approval', [ApprovalController::class, 'index'])->name('approval.index');
+    Route::get('/approval/detail/{id}', [ApprovalController::class, 'detail'])->name('approval.detail');
+    Route::post('/approval/store', [ApprovalController::class, 'store'])->name('approval.store');
 });
