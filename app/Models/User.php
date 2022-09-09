@@ -56,16 +56,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(RoleUser::class, 'user_id', 'id');
     }
-
-	public function scopegetUserRole($query)
-    {
-        return $query->join('role_user', 'users.id', '=', 'role_user.user_id')
-                     ->join('roles', 'role_user.role_id', '=', 'roles.id')
-                     ->select('users.id', 'users.name', 'users.username', 'users.email', 'roles.name as rolename');
-    }
-
-    public function roleUser()
-    {
-        return $this->hasOne(RoleUser::class, 'user_id', 'id');
-    }
 }

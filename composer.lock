@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "79636d3a3993db45c6071c8c3a889695",
-=======
-    "content-hash": "e2d3779b85ac2ab7bc4e5ad1c12d7086",
->>>>>>> a56c6a0753dd4aaf9eedde481ddd1b1626d9d12b
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -5781,7 +5777,6 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "yajra/laravel-datatables-oracle",
             "version": "v9.21.2",
             "source": {
@@ -5822,8 +5817,7 @@
                         "Yajra\\DataTables\\DataTablesServiceProvider"
                     ],
                     "aliases": {
-                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
-=======
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables",
             "name": "webpatser/laravel-uuid",
             "version": "3.0",
             "source": {
@@ -5855,21 +5849,17 @@
                     ],
                     "aliases": {
                         "Uuid": "Webpatser\\Uuid\\Uuid"
->>>>>>> a56c6a0753dd4aaf9eedde481ddd1b1626d9d12b
                     }
                 }
             },
             "autoload": {
-<<<<<<< HEAD
                 "files": [
                     "src/helper.php"
                 ],
                 "psr-4": {
-                    "Yajra\\DataTables\\": "src/"
-=======
+                    "Yajra\\DataTables\\": "src/",
                 "psr-0": {
                     "Webpatser\\Uuid": "src/"
->>>>>>> a56c6a0753dd4aaf9eedde481ddd1b1626d9d12b
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5878,7 +5868,6 @@
             ],
             "authors": [
                 {
-<<<<<<< HEAD
                     "name": "Arjay Angeles",
                     "email": "aqangeles@gmail.com"
                 }
@@ -5904,7 +5893,6 @@
                 }
             ],
             "time": "2022-07-12T04:48:03+00:00"
-=======
                     "name": "Christoph Kempen",
                     "email": "christoph@downsized.nl"
                 }
@@ -5919,7 +5907,6 @@
                 "source": "https://github.com/webpatser/uuid"
             },
             "time": "2017-09-03T23:16:49+00:00"
->>>>>>> a56c6a0753dd4aaf9eedde481ddd1b1626d9d12b
         }
     ],
     "packages-dev": [
