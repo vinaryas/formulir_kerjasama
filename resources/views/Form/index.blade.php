@@ -12,7 +12,7 @@
         <a href="{{ route('form.create') }}" class="btn btn-info"><i class="fas fa-file"> <b> Buat Form </b> </i></a>
     </div>
     <div class="card-body">
-        <table class="table table-responsive table-bordered dt-responsive table-striped table-sm" id="t_kerjasama" style="width: 100%">
+        <table class="table table-bordered dt-responsive table-striped table-sm" id="t_kerjasama" style="width: 100%">
             <thead>
                 <tr>
                     <th> No. </th>
@@ -49,9 +49,4 @@
 			});
         });
     </script>
-    {{-- <script>
-        $(document).ready(function(){
-            $('.js-select2').select2();
-        });
-    </script> --}}
 @stop
