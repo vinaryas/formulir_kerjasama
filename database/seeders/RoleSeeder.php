@@ -19,6 +19,7 @@ class RoleSeeder extends Seeder
                 'id' => 1,
                 'name' => 'administrator',
                 'display_name' => 'Administrator',
+                'description' => 'administrator',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
