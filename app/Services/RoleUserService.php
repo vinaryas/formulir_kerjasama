@@ -23,6 +23,10 @@ class RoleUserService
         return $this->RoleUser->updateOrCreate($data);
     }
 
+    public function store($data){
+        return $this->Permission->create($data);
+    }
+
     public function update($data, $id)
     {
         return $this->RoleUser->where('user_id', $id)->update($data);
@@ -31,6 +35,11 @@ class RoleUserService
     public function getRoleFromUserId($user_id)
     {
         return $this->RoleUser->where('user_id', $user_id);
+    }
+
+    public function delete($data, $id)
+    {
+         return $this->RoleUser->where('id', $id)->delete($data);
     }
 
 }

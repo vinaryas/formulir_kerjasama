@@ -59,6 +59,28 @@ Route::group(['middleware' => []], function () {
     });
 });
 
+Route::group(['prefix' => 'master'], function(){
+    Route::get('/jenis_kerjasama', [App\Http\Controllers\JenisKerjasamaController::class, 'index'])->name('jenisKerjasama.index');
+    Route::post('/jenis_kerjasama', [App\Http\Controllers\JenisKerjasamaController::class, 'store'])->name('jenisKerjasama.store');
+    Route::get('/jenis_kerjasama/detail/{id}', [App\Http\Controllers\JenisKerjasamaController::class, 'detail'])->name('jenisKerjasama.detail');
+    Route::post('/jenis_kerjasama/update', [App\Http\Controllers\JenisKerjasamaController::class, 'update'])->name('jenisKerjasama.update');
+
+    Route::get('/jenis_pengajuan', [App\Http\Controllers\JenisPengajuanController::class, 'index'])->name('jenisPengajuan.index');
+    Route::post('/jenis_pengajuan', [App\Http\Controllers\JenisPengajuanController::class, 'store'])->name('jenisPengajuan.store');
+    Route::get('/jenis_pengajuan/detail/{id}', [App\Http\Controllers\JenisPengajuanController::class, 'detail'])->name('jenisPengajuan.detail');
+    Route::post('/jenis_pengajuan/update', [App\Http\Controllers\JenisPengajuanController::class, 'update'])->name('jenisPengajuan.update');
+
+    Route::get('/kategori_mitra', [App\Http\Controllers\KategoriMitraController::class, 'index'])->name('kategoriMitra.index');
+    Route::post('/kategori_mitra', [App\Http\Controllers\KategoriMitraController::class, 'store'])->name('kategoriMitra.store');
+    Route::get('/kategori_mitra/detail/{id}', [App\Http\Controllers\KategoriMitraController::class, 'detail'])->name('kategoriMitra.detail');
+    Route::post('/kategori_mitra/update', [App\Http\Controllers\KategoriMitraController::class, 'update'])->name('kategoriMitra.update');
+
+    Route::get('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'index'])->name('rencanaFormalisasi.index');
+    Route::post('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'store'])->name('rencanaFormalisasi.store');
+    Route::get('/rencana_formalisasi/detail/{id}', [App\Http\Controllers\RencanaFormalisasiController::class, 'detail'])->name('rencanaFormalisasi.detail');
+    Route::post('/rencana_formalisasi/update', [App\Http\Controllers\RencanaFormalisasiController::class, 'update'])->name('rencanaFormalisasi.update');
+});
+
 Route::group(['prefix' => 'form'], function(){
     Route::get('', [FormController::class, 'index'])->name('form.index');
 //  Route::get('//detail/{id}', [formController::class, 'detail'])->name('form.detail');

@@ -47,6 +47,44 @@ class AppServiceProvider extends ServiceProvider
                 'active' => ['approval*'],
             ]);
 
+            $event->menu->add([
+                'text' => 'User',
+                'url' => route('user.index'),
+                'icon' => 'fas fa-bullseye',
+                'active' => ['user.index'],
+            ]);
+
+            $event->menu->add([
+                'text' => 'Master',
+                'icon' => 'fas fa-user-shield',
+                'submenu' => [
+                    [
+                        'text' => 'Jenis Kerjasama',
+                        'url' => route('jenisKerjasama.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['jenisKerjasama.index'],
+                    ],
+                    [
+                        'text' => 'Jenis Pengajuan',
+                        'url' => route('jenisPengajuan.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['jenisPengajuan.index'],
+                    ],
+                    [
+                        'text' => 'Kategori Mitra',
+                        'url' => route('kategoriMitra.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['kategoriMitra.index'],
+                    ],
+                    [
+                        'text' => 'Rencana Formalisasi',
+                        'url' => route('rencanaFormalisasi.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['rencanaFormalisasi.index'],
+                    ],
+                ],
+            ]);
+
         });
     }
 }

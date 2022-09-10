@@ -22,4 +22,19 @@ class KategoriMitraService
    {
         return $this->KategoriMitra->create($data);
    }
+
+   public function getById($id)
+   {
+        return $this->KategoriMitra->where('id', $id);
+   }
+
+   public function update($data, $id)
+   {
+        return $this->KategoriMitra->where('id', $id)->update($data);
+   }
+
+   public function delete($data, $id)
+   {
+        return $this->KategoriMitra->where('id', $id)->delete($data);
+   }
 }
