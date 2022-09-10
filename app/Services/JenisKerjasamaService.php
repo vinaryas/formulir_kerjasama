@@ -22,4 +22,14 @@ class JenisKerjasamaService
    {
         return $this->JenisKerjasama->create($data);
    }
+
+   public function getById($id)
+   {
+        return $this->JenisKerjasama->where('id', $id);
+   }
+
+   public function update($data, $id)
+   {
+        return $this->JenisKerjasama->where('id', $id)->update($data);
+   }
 }

@@ -22,4 +22,14 @@ class JenisPengajuanService
    {
         return $this->JenisPengajuan->create($data);
    }
+
+   public function getById($id)
+   {
+        return $this->JenisPengajuan->where('id', $id);
+   }
+
+   public function update($data, $id)
+   {
+        return $this->JenisPengajuan->where('id', $id)->update($data);
+   }
 }

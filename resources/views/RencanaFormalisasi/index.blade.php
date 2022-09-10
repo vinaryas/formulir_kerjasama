@@ -29,6 +29,7 @@
                 <tr>
                     <th> No. </th>
                     <th> Rencana Formalisasi </th>
+                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,9 @@
                     <tr>
                         <td>{{ $rencana->id }}</td>
                         <td>{{ $rencana->rencana }}</td>
+                        <td><a href="{{ route('rencanaKegiatan.detail', $rencana->id) }}"
+                            class="btn btn-info btn-sm"> Detail <i class="fas fa-angle-right"></i>
+                        </a></td>
                     </tr>
                 @endforeach
             </tbody>

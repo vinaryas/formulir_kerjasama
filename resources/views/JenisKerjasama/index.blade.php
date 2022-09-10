@@ -29,6 +29,7 @@
                 <tr>
                     <th> No. </th>
                     <th> Jenis Kerjasama </th>
+                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,9 @@
                     <tr>
                         <td>{{ $kerjasama->id }}</td>
                         <td>{{ $kerjasama->kerjasama }}</td>
+                        <td><a href="{{ route('jenisKerjasama.detail', $kerjasama->id) }}"
+                            class="btn btn-info btn-sm"> Detail <i class="fas fa-angle-right"></i>
+                        </a></td>
                     </tr>
                 @endforeach
             </tbody>

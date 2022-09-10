@@ -28,6 +28,26 @@ class JenisKerjasamaController extends Controller
         }catch(\Throwable $th){
             dd($th);
         }
+    }
 
+    public function detail($id){
+        $jenisKerjasama = JenisKerjasamaService::getById($id)->first();
+
+        return view('jenisKerjasama.detail', compact('jenisKerjasama'));
+    }
+
+    public function update(Request $request){
+        DB::beginTransaction();
+        try{
+            $data = [
+                'kerjasama'=>$request->kerjasama,
+                'updated_at'=>now(),
+            ];
+            $update = JenisKerjasamaService::update($data, $request->id);
+            DB::commit();
+            return redirect()->route('jenisKerjasama.index');
+        }catch(\Throwable $th){
+            dd($th);
+        }
     }
 }

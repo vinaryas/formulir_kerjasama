@@ -21,6 +21,10 @@ class PermissionRoleService
         return $this->PermissionRole->updateOrCreate($data);
     }
 
+    public function store($data){
+        return $this->Permission->create($data);
+    }
+
     public function find($id){
         return $this->all()->where('id', $id);
     }

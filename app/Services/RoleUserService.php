@@ -23,6 +23,10 @@ class RoleUserService
         return $this->RoleUser->updateOrCreate($data);
     }
 
+    public function store($data){
+        return $this->Permission->create($data);
+    }
+
     public function update($data, $id)
     {
         return $this->RoleUser->where('user_id', $id)->update($data);

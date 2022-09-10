@@ -28,6 +28,26 @@ class JenisPengajuanController extends Controller
         }catch(\Throwable $th){
             dd($th);
         }
+    }
 
+    public function detail(){
+        $jenisPengajuan = JenisPengajuanService::getById()->first();
+
+        return view('jenisPengajuan.detail', compact('jenisPengajuan'));
+    }
+
+    public function update(Request $request){
+        DB::beginTransaction();
+        try{
+            $data = [
+                'pengajuan'=>$request->pengajuan,
+                'updated_at'=>now(),
+            ];
+            $update = JenisPengajuanService::update($data, $request->id);
+            DB::commit();
+            return redirect()->route('jenisPengajuan.index');
+        }catch(\Throwable $th){
+            dd($th);
+        }
     }
 }

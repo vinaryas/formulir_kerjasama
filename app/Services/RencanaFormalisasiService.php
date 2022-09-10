@@ -22,4 +22,14 @@ class RencanaFormalisasiService
    {
         return $this->RencanaFormalisasi->create($data);
    }
+
+   public function getById($id)
+   {
+        return $this->RencanaFormalisasi->where('id', $id);
+   }
+
+   public function update($data, $id)
+   {
+        return $this->RencanaFormalisasi->where('id', $id)->update($data);
+   }
 }
