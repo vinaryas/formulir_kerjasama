@@ -32,4 +32,10 @@ class JenisKerjasamaService
    {
         return $this->JenisKerjasama->where('id', $id)->update($data);
    }
+
+   public function delete($data, $id)
+   {
+        return $this->JenisKerjasama->where('id', $id)->delete($data);
+   }
+
 }

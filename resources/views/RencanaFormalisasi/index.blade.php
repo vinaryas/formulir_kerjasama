@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<form class="card" action="{{ route('rencanaKegiatan.store') }}" method="POST">
+<form class="card" action="{{ route('rencanaFormalisasi.store') }}" method="POST">
     {{ csrf_field() }}
     <div class="card-body">
         <div class="row">
@@ -37,7 +37,7 @@
                     <tr>
                         <td>{{ $rencana->id }}</td>
                         <td>{{ $rencana->rencana }}</td>
-                        <td><a href="{{ route('rencanaKegiatan.detail', $rencana->id) }}"
+                        <td><a href="{{ route('rencanaFormalisasi.detail', $rencana->id) }}"
                             class="btn btn-info btn-sm"> Detail <i class="fas fa-angle-right"></i>
                         </a></td>
                     </tr>

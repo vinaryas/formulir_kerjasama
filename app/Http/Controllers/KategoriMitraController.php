@@ -30,25 +30,37 @@ class KategoriMitraController extends Controller
         }
     }
 
-    public function detail(){
-        $kategoriMitra = KategoriMitraService::getById()->first();
+    public function detail($id){
+        $kategoriMitra = KategoriMitraService::getById($id)->first();
 
         return view('kategoriMitra.detail', compact('kategoriMitra'));
     }
 
     public function update(Request $request){
         DB::beginTransaction();
-        try{
-            $data = [
-                'kategori'=>$request->kategori,
-                'created_at'=>now(),
-                'updated_at'=>now(),
-            ];
-            $update = KategoriMitraService::update($data, $request->id);
-            DB::commit();
-            return redirect()->route('kategoriMitra.index');
-        }catch(\Throwable $th){
-            dd($th);
+        if (isset($_POST["update"])){
+            try{
+                $data = [
+                    'kategori'=>$request->kategori,
+                    'updated_at'=>now(),
+                ];
+                $update = KategoriMitraService::update($data, $request->id);
+                DB::commit();
+                return redirect()->route('kategoriMitra.index');
+            }catch(\Throwable $th){
+                dd($th);
+            }
+        }elseif (isset($_POST["delete"])){
+            try{
+                $data = [
+                    'kategori'=>$request->kategori,
+                ];
+                $delete = KategoriMitraService::delete($data, $request->id);
+                DB::commit();
+                return redirect()->route('kategoriMitra.index');
+            }catch(\Throwable $th){
+                dd($th);
+            }
         }
     }
 }

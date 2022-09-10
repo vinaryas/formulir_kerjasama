@@ -59,21 +59,6 @@ Route::group(['middleware' => []], function () {
     });
 });
 
-Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
-Route::post('/user', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
-
-Route::get('/role', [App\Http\Controllers\RoleController::class, 'index'])->name('role.index');
-Route::post('/role', [App\Http\Controllers\RoleController::class ,'store'])->name('role.store');
-
-Route::get('/permission', [App\Http\Controllers\PermissionController::class, 'index'])->name('permission.index');
-Route::post('/permission', [App\Http\Controllers\PermissionController::class, 'store'])->name('permission.store');
-
-Route::get('/permission_role', [App\Http\Controllers\PermissionRoleController::class, 'index'])->name('permission_role.index');
-Route::post('/permission_role', [App\Http\Controllers\PermissionRoleController::class, 'store'])->name('permission_role.store');
-
-Route::get('/role_user', [App\Http\Controllers\RoleUserController::class, 'index'])->name('role_user.index');
-Route::post('/role_user', [App\Http\Controllers\RoleUserController::class, 'store'])->name('role_user.store');
-
 Route::group(['prefix' => 'master'], function(){
     Route::get('/jenis_kerjasama', [App\Http\Controllers\JenisKerjasamaController::class, 'index'])->name('jenisKerjasama.index');
     Route::post('/jenis_kerjasama', [App\Http\Controllers\JenisKerjasamaController::class, 'store'])->name('jenisKerjasama.store');
@@ -90,10 +75,10 @@ Route::group(['prefix' => 'master'], function(){
     Route::get('/kategori_mitra/detail/{id}', [App\Http\Controllers\KategoriMitraController::class, 'detail'])->name('kategoriMitra.detail');
     Route::post('/kategori_mitra/update', [App\Http\Controllers\KategoriMitraController::class, 'update'])->name('kategoriMitra.update');
 
-    Route::get('/rencana_kegiatan', [App\Http\Controllers\RencanaFormalisasiController::class, 'index'])->name('rencanaKegiatan.index');
-    Route::post('/rencana_kegiatan', [App\Http\Controllers\RencanaFormalisasiController::class, 'store'])->name('rencanaKegiatan.store');
-    Route::get('/rencana_kegiatan/detail/{id}', [App\Http\Controllers\RencanaFormalisasiController::class, 'detail'])->name('rencanaKegiatan.detail');
-    Route::post('/rencana_kegiatan/update', [App\Http\Controllers\RencanaFormalisasiController::class, 'update'])->name('rencanaKegiatan.update');
+    Route::get('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'index'])->name('rencanaFormalisasi.index');
+    Route::post('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'store'])->name('rencanaFormalisasi.store');
+    Route::get('/rencana_formalisasi/detail/{id}', [App\Http\Controllers\RencanaFormalisasiController::class, 'detail'])->name('rencanaFormalisasi.detail');
+    Route::post('/rencana_formalisasi/update', [App\Http\Controllers\RencanaFormalisasiController::class, 'update'])->name('rencanaFormalisasi.update');
 });
 
 Route::group(['prefix' => 'form'], function(){

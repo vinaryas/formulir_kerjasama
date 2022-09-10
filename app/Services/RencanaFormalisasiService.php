@@ -32,4 +32,10 @@ class RencanaFormalisasiService
    {
         return $this->RencanaFormalisasi->where('id', $id)->update($data);
    }
+
+   public function delete($data, $id)
+   {
+        return $this->RencanaFormalisasi->where('id', $id)->delete($data);
+   }
+
 }

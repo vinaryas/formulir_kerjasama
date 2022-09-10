@@ -37,7 +37,7 @@
                     <tr>
                         <td>{{ $kategori->id }}</td>
                         <td>{{ $kategori->kategori }}</td>
-                        <td><a href="{{ route('jenisPengajuan.detail', $kategori->id) }}"
+                        <td><a href="{{ route('kategoriMitra.detail', $kategori->id) }}"
                             class="btn btn-info btn-sm"> Detail <i class="fas fa-angle-right"></i>
                         </a></td>
                     </tr>

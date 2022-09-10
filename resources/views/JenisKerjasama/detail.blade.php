@@ -21,8 +21,13 @@
         </div>
         <br>
         <div class="float-right">
-            <button type="submit" class="btn btn-info" name="submit" id="submit" >
+            <button type="submit" class="btn btn-info" name="update" id="update" >
                 <i class="fas fa-save"></i> Update
+            </button>
+        </div>
+        <div class="">
+            <button type="submit" class="btn btn-danger" name="delete" id="delete">
+                <i class="fas fa-trash"></i> Delete
             </button>
         </div>
     </div>

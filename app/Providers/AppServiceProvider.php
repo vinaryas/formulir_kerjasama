@@ -55,44 +55,6 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
-                'text' => 'Role',
-                'icon' => 'fas fa-user-shield',
-                'submenu' => [
-                    [
-                        'text' => 'Role',
-                        'url' => route('role.index'),
-                        'icon' => 'fas fa-bullseye',
-                        'active' => ['role.index'],
-                    ],
-                    [
-                        'text' => 'Role User',
-                        'url' => route('role_user.index'),
-                        'icon' => 'fas fa-bullseye',
-                        'active' => ['role_user.index'],
-                    ],
-                ],
-            ]);
-
-            $event->menu->add([
-                'text' => 'Permission',
-                'icon' => 'fas fa-user-shield',
-                'submenu' => [
-                    [
-                        'text' => 'Permission',
-                        'url' => route('permission.index'),
-                        'icon' => 'fas fa-bullseye',
-                        'active' => ['permission.index'],
-                    ],
-                    [
-                        'text' => 'Permission Role',
-                        'url' => route('permission_role.index'),
-                        'icon' => 'fas fa-bullseye',
-                        'active' => ['permission_role.index'],
-                    ],
-                ],
-            ]);
-
-            $event->menu->add([
                 'text' => 'Master',
                 'icon' => 'fas fa-user-shield',
                 'submenu' => [
@@ -115,10 +77,10 @@ class AppServiceProvider extends ServiceProvider
                         'active' => ['kategoriMitra.index'],
                     ],
                     [
-                        'text' => 'Rencana Kegiatane',
-                        'url' => route('rencanaKegiatan.index'),
+                        'text' => 'Rencana Formalisasi',
+                        'url' => route('rencanaFormalisasi.index'),
                         'icon' => 'far fa-circle',
-                        'active' => ['rencanaKegiatan.index'],
+                        'active' => ['rencanaFormalisasi.index'],
                     ],
                 ],
             ]);

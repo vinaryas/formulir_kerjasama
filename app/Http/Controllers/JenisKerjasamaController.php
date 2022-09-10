@@ -38,16 +38,29 @@ class JenisKerjasamaController extends Controller
 
     public function update(Request $request){
         DB::beginTransaction();
-        try{
-            $data = [
-                'kerjasama'=>$request->kerjasama,
-                'updated_at'=>now(),
-            ];
-            $update = JenisKerjasamaService::update($data, $request->id);
-            DB::commit();
-            return redirect()->route('jenisKerjasama.index');
-        }catch(\Throwable $th){
-            dd($th);
+        if (isset($_POST["update"])){
+            try{
+                $data = [
+                    'kerjasama'=>$request->kerjasama,
+                    'updated_at'=>now(),
+                ];
+                $update = JenisKerjasamaService::update($data, $request->id);
+                DB::commit();
+                return redirect()->route('jenisKerjasama.index');
+            }catch(\Throwable $th){
+                dd($th);
+            }
+        }elseif (isset($_POST["delete"])){
+            try{
+                $data = [
+                    'kerjasama'=>$request->kerjasama,
+                ];
+                $delete = JenisKerjasamaService::delete($data, $request->id);
+                DB::commit();
+                return redirect()->route('jenisKerjasama.index');
+            }catch(\Throwable $th){
+                dd($th);
+            }
         }
     }
 }

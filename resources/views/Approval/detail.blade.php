@@ -96,12 +96,12 @@
     </div>
     <div class="card-footer">
         <div class="float-left">
-            <button type="submit" class="btn btn-danger" name="disapprove" id="disapprove" value="disapprove">
+            <button type="submit" class="btn btn-danger" name="disapprove" id="disapprove">
                 <i class="fas fa-times"></i> DisApprove
             </button>
         </div>
         <div class="float-right">
-            <button type="submit" class="btn btn-success" name="approve" id="approve" value="approve">
+            <button type="submit" class="btn btn-success" name="approve" id="approve">
                 <i class="fas fa-save"></i> Approve
             </button>
         </div>

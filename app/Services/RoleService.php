@@ -31,4 +31,9 @@ class RoleService
         return $this->RoleUser->where('user_id', $id)->update($data);
     }
 
+    public function delete($data, $id)
+    {
+         return $this->RoleUser->where('user_id', $id)->delete($data);
+    }
+
 }
