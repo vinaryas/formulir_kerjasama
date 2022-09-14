@@ -34,27 +34,28 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
 			$event->menu->add([
-                'text' => 'Pengajuan',
-                'url' => route('form.index'),
-                'icon' => 'fas fa-file-alt',
-                'active' => ['form*'],
+                'text' => 'Manajemen Otorisasi',
+                'icon' => 'fas fa-user-shield',
+                'permission' => 'list-role|list-user',
+                'submenu' => [
+                    [
+                        'text' => 'User',
+                        'url' => route('user.index'),
+                        'icon' => 'fas fa-bullseye',
+                        'active' => [route('user.index').'/*',route('user.index')],
+                        'permission' => 'list-user',
+                    ],
+                    [
+                        'text' => 'Role',
+                        'url' => route('role.index'),
+                        'icon' => 'fas fa-bullseye',
+                        'active' => [route('role.index').'/*',route('role.index')],
+                        'permission' => 'list-role',
+                    ],
+                ],
             ]);
 
 			$event->menu->add([
-                'text' => 'Persetujuan',
-                'url' => route('approval.index'),
-                'icon' => 'fas fa-file-signature',
-                'active' => ['approval*'],
-            ]);
-
-            $event->menu->add([
-                'text' => 'User',
-                'url' => route('user.index'),
-                'icon' => 'fas fa-bullseye',
-                'active' => ['user.index'],
-            ]);
-
-            $event->menu->add([
                 'text' => 'Master',
                 'icon' => 'fas fa-user-shield',
                 'submenu' => [
@@ -63,26 +64,46 @@ class AppServiceProvider extends ServiceProvider
                         'url' => route('jenisKerjasama.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['jenisKerjasama.index'],
+						'permission' => 'jenis-kerjasama',
                     ],
                     [
                         'text' => 'Jenis Pengajuan',
                         'url' => route('jenisPengajuan.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['jenisPengajuan.index'],
+						'permission' => 'jenis-pengajuan'
                     ],
                     [
                         'text' => 'Kategori Mitra',
                         'url' => route('kategoriMitra.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['kategoriMitra.index'],
+						'permission' => 'kategori-mitra',
                     ],
                     [
                         'text' => 'Rencana Formalisasi',
                         'url' => route('rencanaFormalisasi.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['rencanaFormalisasi.index'],
+						'permission' => 'rencana-formalisasi',
                     ],
                 ],
+            ]);
+
+			$event->menu->add([
+                'text' => 'Pengajuan',
+                'url' => route('form.index'),
+                'icon' => 'fas fa-file-alt',
+                'active' => ['form*'],
+				'permission' => 'pengajuan',
+            ]);
+
+			$event->menu->add([
+                'text' => 'Persetujuan',
+                'url' => route('approval.index'),
+                'icon' => 'fas fa-file-signature',
+                'active' => ['approval*'],
+				'permission' => 'persetujuan',
             ]);
 
         });
