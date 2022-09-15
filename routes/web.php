@@ -5,6 +5,7 @@ use App\Http\Controllers\Rbac\PermissionRoleController;
 use App\Http\Controllers\Rbac\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ApprovalEvent;
 use App\Services\support\ApprovalService;
 use App\Services\support\FormService;
 use App\Services\Support\RoleUserService;
@@ -39,6 +40,11 @@ class ApprovalController extends Controller
                     'status'=> 1,
                 ];
                 $updateStatus = ApprovalService::update($roleNextApp, $request->form_id);
+
+                event(new ApprovalEvent([
+                    $updateStatus->id
+                ]));
+
                 DB::commit();
 
                 Alert::success('Approved', 'form has been approved');

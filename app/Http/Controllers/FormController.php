@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Form;
+use App\Events\FormEvent;
 use App\Helper\StoreFile;
 use App\Services\support\ApprovalService;
 use App\Services\support\FormService;
@@ -58,6 +60,11 @@ class FormController extends Controller
             ];
 
             $updateStatus = ApprovalService::store($dataApp);
+
+            event(new FormEvent([
+                $storeData->id,
+                $updateStatus->id
+            ]));
 
             DB::commit();
 
