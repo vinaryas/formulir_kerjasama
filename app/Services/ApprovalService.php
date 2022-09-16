@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Approval;
 
-use App\Services\Support\MappingApprovalService;
+use App\Services\Support\MappingAppService;
 
 class ApprovalService
 {
@@ -32,9 +32,9 @@ class ApprovalService
 
    public function getNextApp($roleId)
    {
-       $thisPosition = MappingApprovalService::getByTypeRoleId($roleId)->first()->position;
+       $thisPosition = MappingAppService::getByTypeRoleId($roleId)->first()->position;
 
-       $nextPosition = MappingApprovalService::getByPosition($thisPosition + 1)->first();
+       $nextPosition = MappingAppService::getByPosition($thisPosition + 1)->first();
 
        return ($nextPosition != null) ? $nextPosition->role_id : 0;
    }

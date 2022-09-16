@@ -5,7 +5,6 @@ use App\Http\Controllers\Rbac\PermissionRoleController;
 use App\Http\Controllers\Rbac\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApprovalController;
-use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -80,6 +79,11 @@ Route::group(['prefix' => 'master'], function(){
     Route::post('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'store'])->name('rencanaFormalisasi.store');
     Route::get('/rencana_formalisasi/detail/{id}', [App\Http\Controllers\RencanaFormalisasiController::class, 'detail'])->name('rencanaFormalisasi.detail');
     Route::post('/rencana_formalisasi/update', [App\Http\Controllers\RencanaFormalisasiController::class, 'update'])->name('rencanaFormalisasi.update');
+
+    Route::get('/mapping_app', [App\Http\Controllers\MappingAppController::class, 'index'])->name('mapping.index');
+    Route::post('/mapping_app', [App\Http\Controllers\MappingAppController::class, 'store'])->name('mapping.store');
+    Route::get('/mapping_app/detail/{id}', [App\Http\Controllers\MappingAppController::class, 'detail'])->name('mapping.detail');
+    Route::post('/mapping_app/update', [App\Http\Controllers\MappingAppController::class, 'update'])->name('mapping.update');
 });
 
 Route::group(['prefix' => 'form'], function(){

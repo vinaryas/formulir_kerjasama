@@ -87,6 +87,13 @@ class AppServiceProvider extends ServiceProvider
                         'active' => ['rencanaFormalisasi.index'],
 						'permission' => 'rencana-formalisasi',
                     ],
+                    [
+                        'text' => 'Mapping Approval',
+                        'url' => route('mapping.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['mapping.index'],
+						// 'permission' => 'mapping',
+                    ],
                 ],
             ]);
 
