@@ -94,3 +94,15 @@ Route::group(['prefix' => 'approval'], function(){
     Route::get('/detail/{id}', [ApprovalController::class, 'detail'])->name('approval.detail');
     Route::post('/store', [ApprovalController::class, 'store'])->name('approval.store');
 });
+
+Route::get('send-mail', function () {
+   
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+   
+    \Mail::to('susilaandika@gmail.com')->send(new \App\Mail\NotificationMail($details));
+   
+    dd("Email is Sent.");
+});
