@@ -63,6 +63,14 @@ class RoleSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+			[
+                'id' => 7,
+                'name' => 'user',
+                'display_name' => 'User',
+                'description' => 'User',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         foreach ($Roles as $Role) {
