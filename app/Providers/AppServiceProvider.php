@@ -58,6 +58,7 @@ class AppServiceProvider extends ServiceProvider
 			$event->menu->add([
                 'text' => 'Master',
                 'icon' => 'fas fa-user-shield',
+				'permission' => 'jenis-kerjasama|jenis-pengajuan',
                 'submenu' => [
                     [
                         'text' => 'Jenis Kerjasama',

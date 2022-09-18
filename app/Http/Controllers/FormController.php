@@ -59,6 +59,13 @@ class FormController extends Controller
 
             $updateStatus = ApprovalService::store($dataApp);
 
+			$details = [
+				'title' => 'Pengajuan Kerjasama',
+				'body' => 'Haloo.. ada email terkait pengajuan Kerjasama'
+			];
+		   
+			\Mail::to('susilaandika@gmail.com')->send(new \App\Mail\NotificationMail($details));
+
             DB::commit();
 
             Alert::success('succes', 'form berhasil disimpan');
