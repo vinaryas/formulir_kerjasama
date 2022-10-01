@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Form;
-use App\Events\FormEvent;
 use App\Helper\StoreFile;
-use App\Services\support\ApprovalService;
-use App\Services\support\FormService;
-use App\Services\support\JenisKerjasamaService;
-use App\Services\support\JenisPengajuanService;
-use App\Services\support\KategoriMitraService;
-use App\Services\support\RencanaFormalisasiService;
+use App\Services\Support\ApprovalService;
+use App\Services\Support\FormService;
+use App\Services\Support\JenisKerjasamaService;
+use App\Services\Support\JenisPengajuanService;
+use App\Services\Support\KategoriMitraService;
+use App\Services\Support\RencanaFormalisasiService;
 use App\Services\Support\RoleUserService;
+use App\Services\Support\StepKerjasamaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +38,6 @@ class FormController extends Controller
     public function store(Request $request){
         DB::beginTransaction();
         $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
-        $nextApp = ApprovalService::getNextApp($roleUsers->role_id, Auth::user()->region_id);
 
         try{
 			$allowedfileExtension = ['pdf', 'doc', 'docx'];
@@ -54,17 +52,19 @@ class FormController extends Controller
             $dataApp = [
                 'form_id' => $storeData->id,
                 'created_by' => Auth::user()->id,
-                'role_last_app' => $roleUsers->role_id,
-                'role_next_app' => $nextApp,
-                'status'=>0
+                'last_role' => $roleUsers->role_id,
+                'next_role' => config('setting_app.role_id.admin'),
+                'status'=> 1
             ];
 
-            $updateStatus = ApprovalService::store($dataApp);
+            $updateStatus = StepKerjasamaService::store($dataApp);
 
-            event(new FormEvent([
-                $storeData->id,
-                $updateStatus->id
-            ]));
+			$details = [
+				'title' => 'Pengajuan Kerjasama',
+				'body' => 'Haloo.. ada email terkait pengajuan Kerjasama'
+			];
+
+			// \Mail::to('susilaandika@gmail.com')->send(new \App\Mail\NotificationMail($details));
 
             DB::commit();
 

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ApprovalEvent;
+use App\Models\StepKerjasama;
 use App\Services\support\ApprovalService;
 use App\Services\support\FormService;
 use App\Services\Support\RoleUserService;
+use App\Services\Support\StepKerjasamaService;
 use App\Services\Support\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 class ApprovalController extends Controller
 {
     public function index(){
-        $forms = FormService::all()->get();
+        $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
+        $forms = StepKerjasamaService::getStatusWakilDekan($roleUsers->role_id)->get();
 
         return view('Approval.index', compact('forms'));
     }
@@ -23,28 +25,25 @@ class ApprovalController extends Controller
     public function detail($id){
         $forms = FormService::getById($id)->first();
 
-
         return view('Approval.detail', compact('forms'));
     }
 
     public function store(Request $request){
         DB::beginTransaction();
         $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
-        $nextApp = ApprovalService::getNextApp($roleUsers->role_id, Auth::user()->region_id);
 
         if (isset($_POST["approve"])){
             try{
-                $roleNextApp = [
-                    'role_last_app' => $roleUsers->role_id,
-                    'role_next_app' => $nextApp,
-                    'status'=> 1,
+                $dataApp = [
+                    'form_id' => $request->form_id,
+                    'approved_by' => Auth::user()->id,
+                    'approved_at' => now(),
+                    'last_role' => $roleUsers->role_id,
+                    'next_role' => config('setting_app.role_id.reviewer'),
+                    'status'=> 3
                 ];
-                $updateStatus = ApprovalService::update($roleNextApp, $request->form_id);
 
-                event(new ApprovalEvent([
-                    $updateStatus->id
-                ]));
-
+                $updateStatus = StepKerjasamaService::update($dataApp, $request->form_id);
                 DB::commit();
 
                 Alert::success('Approved', 'form has been approved');
@@ -57,12 +56,16 @@ class ApprovalController extends Controller
             }
         }elseif (isset($_POST["disapprove"])){
             try{
-                $roleNextApp = [
-                    'role_last_app' => $roleUsers->role_id,
-                    'role_next_app' => 0,
-                    'status'=> 2,
+                $dataApp = [
+                    'form_id' => $request->form_id,
+                    'rejected_by' => Auth::user()->id,
+                    'rejected_at' => now(),
+                    'last_role' => $roleUsers->role_id,
+                    'next_role' => config('setting_app.role_id.no_next'),
+                    'status'=> 10
                 ];
-                $updateStatus = ApprovalService::update($roleNextApp, $request->form_id);
+
+                $updateStatus = StepKerjasamaService::update($dataApp, $request->form_id);
 
                 DB::commit();
 

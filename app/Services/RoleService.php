@@ -23,17 +23,25 @@ class RoleService
     }
 
     public function store($data){
-        return $this->Permission->create($data);
+        return $this->Role->create($data);
     }
 
     public function update($data, $id)
     {
-        return $this->RoleUser->where('user_id', $id)->update($data);
+        return $this->Role->where('id', $id)->update($data);
     }
 
     public function delete($data, $id)
     {
-         return $this->RoleUser->where('user_id', $id)->delete($data);
+         return $this->Role->where('id', $id)->delete($data);
+    }
+
+    public function getWakilDekan()
+    {
+        return $this->Role
+        ->where('id', '!=' , 1)
+        ->where('id', '!=' , 5)
+        ->where('id', '!=' , 7);
     }
 
 }

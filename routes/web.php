@@ -5,7 +5,9 @@ use App\Http\Controllers\Rbac\PermissionRoleController;
 use App\Http\Controllers\Rbac\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\DispositionController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -79,11 +81,6 @@ Route::group(['prefix' => 'master'], function(){
     Route::post('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'store'])->name('rencanaFormalisasi.store');
     Route::get('/rencana_formalisasi/detail/{id}', [App\Http\Controllers\RencanaFormalisasiController::class, 'detail'])->name('rencanaFormalisasi.detail');
     Route::post('/rencana_formalisasi/update', [App\Http\Controllers\RencanaFormalisasiController::class, 'update'])->name('rencanaFormalisasi.update');
-
-    Route::get('/mapping_app', [App\Http\Controllers\MappingAppController::class, 'index'])->name('mapping.index');
-    Route::post('/mapping_app', [App\Http\Controllers\MappingAppController::class, 'store'])->name('mapping.store');
-    Route::get('/mapping_app/detail/{id}', [App\Http\Controllers\MappingAppController::class, 'detail'])->name('mapping.detail');
-    Route::post('/mapping_app/update', [App\Http\Controllers\MappingAppController::class, 'update'])->name('mapping.update');
 });
 
 Route::group(['prefix' => 'form'], function(){
@@ -93,9 +90,32 @@ Route::group(['prefix' => 'form'], function(){
     Route::post('/store', [formController::class, 'store'])->name('form.store');
 });
 
+Route::group(['prefix' => 'disposition'], function(){
+    Route::get('', [DispositionController::class, 'index'])->name('disposition.index');
+    Route::get('/detail/{id}', [DispositionController::class, 'detail'])->name('disposition.detail');
+    Route::post('/store', [DispositionController::class, 'store'])->name('disposition.store');
+});
 
 Route::group(['prefix' => 'approval'], function(){
     Route::get('', [ApprovalController::class, 'index'])->name('approval.index');
     Route::get('/detail/{id}', [ApprovalController::class, 'detail'])->name('approval.detail');
     Route::post('/store', [ApprovalController::class, 'store'])->name('approval.store');
+});
+
+Route::group(['prefix' => 'review'], function(){
+    Route::get('', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/detail/{id}', [ReviewController::class, 'detail'])->name('review.detail');
+    Route::post('/store', [ReviewController::class, 'store'])->name('review.store');
+});
+
+Route::get('send-mail', function () {
+
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+
+    \Mail::to('susilaandika@gmail.com')->send(new \App\Mail\NotificationMail($details));
+
+    dd("Email is Sent.");
 });

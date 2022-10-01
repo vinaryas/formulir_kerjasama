@@ -58,6 +58,7 @@ class AppServiceProvider extends ServiceProvider
 			$event->menu->add([
                 'text' => 'Master',
                 'icon' => 'fas fa-user-shield',
+				'permission' => 'jenis-kerjasama|jenis-pengajuan',
                 'submenu' => [
                     [
                         'text' => 'Jenis Kerjasama',
@@ -87,13 +88,6 @@ class AppServiceProvider extends ServiceProvider
                         'active' => ['rencanaFormalisasi.index'],
 						'permission' => 'rencana-formalisasi',
                     ],
-                    [
-                        'text' => 'Mapping Approval',
-                        'url' => route('mapping.index'),
-                        'icon' => 'far fa-circle',
-                        'active' => ['mapping.index'],
-						// 'permission' => 'mapping',
-                    ],
                 ],
             ]);
 
@@ -102,15 +96,31 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('form.index'),
                 'icon' => 'fas fa-file-alt',
                 'active' => ['form*'],
-				'permission' => 'pengajuan',
+				// 'permission' => 'pengajuan',
+            ]);
+
+            $event->menu->add([
+                'text' => 'Disposition',
+                'url' => route('disposition.index'),
+                'icon' => 'fas fa-file-alt',
+                'active' => ['disposition*'],
+				// 'permission' => 'disposition',
             ]);
 
 			$event->menu->add([
-                'text' => 'Persetujuan',
+                'text' => 'Approval',
                 'url' => route('approval.index'),
                 'icon' => 'fas fa-file-signature',
                 'active' => ['approval*'],
-				'permission' => 'persetujuan',
+				// 'permission' => 'persetujuan',
+            ]);
+
+            $event->menu->add([
+                'text' => 'Review',
+                'url' => route('review.index'),
+                'icon' => 'fas fa-file-signature',
+                'active' => ['review*'],
+				// 'permission' => 'disposition',
             ]);
 
         });

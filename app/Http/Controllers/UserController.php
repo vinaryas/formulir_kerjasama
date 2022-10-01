@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Hash;
 use App\Services\Auth\UserService;
 use App\Http\Requests\UserPost;
 use App;
+use DataTables;
 use Alert;
 use App\Helper\MyHelper;
 use App\Models\Role;
 use App\Models\User;
+use DB;
 use Auth;
-use Illuminate\Support\Facades\DB;
 use Laratrust;
-use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
