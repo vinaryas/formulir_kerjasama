@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'ID Management')
+@section('title', 'Pengajuan Kerjasama')
 
 @section('content_header')
 <h1>Tambah Pengajuan Kerjasama</h1>

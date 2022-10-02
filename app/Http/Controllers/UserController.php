@@ -116,6 +116,13 @@ class UserController extends Controller
         return view('rbac.user.edit', compact('user'));
     }
 
+	public function editProfile($id)
+    {
+        $user = $this->userService->find($id)->first();
+
+        return view('rbac.user.edit_profile', compact('user'));
+    }
+
 	public function editPassword($id)
     {
         return view('rbac.user.edit_password', compact('id'));
@@ -142,6 +149,23 @@ class UserController extends Controller
         }
 
 		return redirect()->route('user.index');
+    }
+
+	public function updateProfile(Request $request, UserService $userService, $id)
+    {
+		$res = $userService->updateData($request->except('_token', '_method', 'password_confirmation', 'password'), $id);
+
+		if($request->password != null){
+			$userService->updatePassword($request->password, $id);
+		}
+
+		if ($res) {
+            toast('Data berhasil diubah !', 'success');
+        } else {
+            toast('Terjadi kesalahan saat mengubah data !', 'error');
+        }
+
+		return redirect()->back();
     }
 
 	public function updatePassword(Request $request, UserService $userService, $id)

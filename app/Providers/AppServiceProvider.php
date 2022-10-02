@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Http\Request;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,19 +35,19 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
 			$event->menu->add([
-                'text' => 'Manajemen Otorisasi',
+                'text' => __('submission.menu.rbac.index'),
                 'icon' => 'fas fa-user-shield',
                 'permission' => 'list-role|list-user',
                 'submenu' => [
                     [
-                        'text' => 'User',
+                        'text' => __('submission.menu.rbac.user'),
                         'url' => route('user.index'),
                         'icon' => 'fas fa-bullseye',
                         'active' => [route('user.index').'/*',route('user.index')],
                         'permission' => 'list-user',
                     ],
                     [
-                        'text' => 'Role',
+                        'text' => __('submission.menu.rbac.role'),
                         'url' => route('role.index'),
                         'icon' => 'fas fa-bullseye',
                         'active' => [route('role.index').'/*',route('role.index')],
@@ -56,33 +57,33 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
 			$event->menu->add([
-                'text' => 'Master',
+                'text' => __('submission.menu.master.index'),
                 'icon' => 'fas fa-user-shield',
 				'permission' => 'jenis-kerjasama|jenis-pengajuan',
                 'submenu' => [
                     [
-                        'text' => 'Jenis Kerjasama',
+                        'text' => __('submission.menu.master.cooperation_type'),
                         'url' => route('jenisKerjasama.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['jenisKerjasama.index'],
 						'permission' => 'jenis-kerjasama',
                     ],
                     [
-                        'text' => 'Jenis Pengajuan',
+                        'text' => __('submission.menu.master.submission_type'),
                         'url' => route('jenisPengajuan.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['jenisPengajuan.index'],
 						'permission' => 'jenis-pengajuan'
                     ],
                     [
-                        'text' => 'Kategori Mitra',
+                        'text' => __('submission.menu.master.partner_category'),
                         'url' => route('kategoriMitra.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['kategoriMitra.index'],
 						'permission' => 'kategori-mitra',
                     ],
                     [
-                        'text' => 'Rencana Formalisasi',
+                        'text' => __('submission.menu.master.formalization_plan'),
                         'url' => route('rencanaFormalisasi.index'),
                         'icon' => 'far fa-circle',
                         'active' => ['rencanaFormalisasi.index'],
@@ -92,7 +93,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
 			$event->menu->add([
-                'text' => 'Pengajuan',
+                'text' => __('submission.menu.submission'),
                 'url' => route('form.index'),
                 'icon' => 'fas fa-file-alt',
                 'active' => ['form*'],
@@ -100,11 +101,25 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
 			$event->menu->add([
-                'text' => 'Persetujuan',
-                'url' => route('approval.index'),
+                'text' => __('submission.menu.disposition'),
+                'url' => route('disposisition.index'),
                 'icon' => 'fas fa-file-signature',
                 'active' => ['approval*'],
-				'permission' => 'persetujuan',
+				'permission' => 'disposisi',
+            ]);
+
+			$event->menu->add([
+                'text' => __('submission.menu.approval'),
+                'url' => route('persetujuan.index'),
+                'icon' => 'fas fa-file-signature',
+                'active' => ['approval*'],
+            ]);
+
+			$event->menu->add([
+                'text' => __('submission.menu.review'),
+                'url' => route('review.index'),
+                'icon' => 'fas fa-file-signature',
+                'active' => ['review*'],
             ]);
 
         });

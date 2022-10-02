@@ -36,28 +36,17 @@ class FormController extends Controller
 
     public function store(Request $request){
         DB::beginTransaction();
-        $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
-        $nextApp = ApprovalService::getNextApp($roleUsers->role_id, Auth::user()->region_id);
 
         try{
 			$allowedfileExtension = ['pdf', 'doc', 'docx'];
 			$file = StoreFile::storeFile($request->file_kerjasama, config('kerjasama.file_path'), $allowedfileExtension);
 
 			$request->request->add([
-				'file' => $file['name']
+				'file' => $file['name'],
+				'status' => 1
 			]);
 
             $storeData = FormService::store($request->except('_token', 'file_kerjasama'));
-
-            $dataApp = [
-                'form_id' => $storeData->id,
-                'created_by' => Auth::user()->id,
-                'role_last_app' => $roleUsers->role_id,
-                'role_next_app' => $nextApp,
-                'status'=>0
-            ];
-
-            $updateStatus = ApprovalService::store($dataApp);
 
 			$details = [
 				'title' => 'Pengajuan Kerjasama',

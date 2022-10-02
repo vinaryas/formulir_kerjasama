@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/logo2.ico') }}">
 
     {{-- Custom Meta Tags --}}
     @yield('meta_tags')
@@ -76,7 +77,7 @@
 
 </head>
 
-<body class="@yield('classes_body')" @yield('body_data')>
+<body class="@yield('classes_body')" @yield('body_data') style="background-image: url('{{ asset('images/bg-login.jpg') }}'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
 
     {{-- Body Content --}}
     @yield('body')

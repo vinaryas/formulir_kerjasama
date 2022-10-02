@@ -38,11 +38,7 @@ class UserService{
 
     public function updateData($data, $id)
     {
-        return User::where('id', '=', $id)->update([
-                            'name' => $data['name'],
-                            'username' => $data['username'],
-                            'jabatan_id' => $data['jabatan_id'],
-                    ]);
+        return User::where('id', '=', $id)->update($data);
     }
 
 	public function updatePassword($password, $id)
