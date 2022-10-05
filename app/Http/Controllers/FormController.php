@@ -40,13 +40,15 @@ class FormController extends Controller
         try{
 			$allowedfileExtension = ['pdf', 'doc', 'docx'];
 			$file = StoreFile::storeFile($request->file_kerjasama, config('kerjasama.file_path'), $allowedfileExtension);
+			$filePerjanjian = StoreFile::storeFile($request->file_perjanjian_kerjasama, config('kerjasama.file_path'), $allowedfileExtension);
 
 			$request->request->add([
 				'file' => $file['name'],
+				'file_perjanjian' => $filePerjanjian['name'],
 				'status' => 1
 			]);
 
-            $storeData = FormService::store($request->except('_token', 'file_kerjasama'));
+            $storeData = FormService::store($request->except('_token', 'file_kerjasama', 'file_perjanjian_kerjasama'));
 
 			$details = [
 				'title' => 'Pengajuan Kerjasama',

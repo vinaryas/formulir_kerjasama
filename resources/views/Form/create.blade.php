@@ -116,8 +116,13 @@
 		</div>
 
 		<div class="form-group">
-			<label>File Pengajuan Kerjasama</label>
+			<label>Surat Pengantar Kerjasama</label>
 			<input type="file" name="file_kerjasama" class="form-control">
+		</div>
+
+		<div class="form-group">
+			<label>Draft Perjanjian Kerjasama</label>
+			<input type="file" name="file_perjanjian_kerjasama" class="form-control">
 		</div>
 
         <div class="form-group">

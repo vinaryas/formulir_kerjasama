@@ -88,10 +88,20 @@
                 <label> Tempat </label>
                 <input type="text" value="{{ $forms->tempat }}" name="tempat" class="form-control" readonly>
             </div>
-            <div class="col-md-6">
-                <label> Upload File: </label>
-                <input type="text" value="{{$forms->file }}" name="tempat" class="form-control" readonly>
-            </div>
+			
+            <div class="row">
+				<div class="col-md-12"><strong>Surat Pengantar:</strong></div>
+				<div class="col-md-12">
+					<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+				</div>
+			</div><hr>
+	
+			<div class="row">
+				<div class="col-md-12"><strong>Draft Perjanjian:</strong></div>
+				<div class="col-md-12">
+					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+				</div>
+			</div><hr>
         </div>
     </div>
     <div class="card-footer">

@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Pengajuan</b> Kerjasama',
+    'logo' => '<b>PENGAJUAN KERJASAMA</b>',
     'logo_img' => 'images/logo2.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,

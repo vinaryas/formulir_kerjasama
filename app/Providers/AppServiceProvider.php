@@ -113,6 +113,7 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('persetujuan.index'),
                 'icon' => 'fas fa-file-signature',
                 'active' => ['approval*'],
+				'permission' => 'persetujuan',
             ]);
 
 			$event->menu->add([
@@ -120,6 +121,7 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('review.index'),
                 'icon' => 'fas fa-file-signature',
                 'active' => ['review*'],
+				'permission' => 'review',
             ]);
 
         });

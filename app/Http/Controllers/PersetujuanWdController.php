@@ -27,8 +27,8 @@ class PersetujuanWdController extends Controller
 	{
 		$data = [
 			'status' => 3,
-			'appropved_by' => Auth::user()->id,
-			'appropved_at' => now()
+			'approved_by' => Auth::user()->id,
+			'approved_at' => now()
 		];
 
 		$res = FormService::update($data, $id);

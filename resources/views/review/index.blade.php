@@ -19,7 +19,8 @@
                     <th> Jenis Pengajuan </th>
                     <th> Nama Mitra Kerjasama </th>
                     <th> Kategori Mitra </th>
-                    <th> File </th>
+                    <th> Surat Pengantar </th>
+                    <th> Draft Perjanjian </th>
 					<th> Action </th>
                 </tr>
             </thead>
@@ -34,6 +35,11 @@
                         <td>
 							<center>
 								<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+							</center>
+						</td>
+						<td>
+							<center>
+								<a href="{{ asset('storage/file/' . $form->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
 							</center>
 						</td>
 						<td><a href="{{ route('review.detail', $submission->id) }}"

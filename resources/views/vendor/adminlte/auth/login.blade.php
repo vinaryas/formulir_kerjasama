@@ -21,6 +21,24 @@
 @section('auth_header', __('adminlte::adminlte.login_message'))
 
 @section('auth_body')
+	<style>
+		b, strong {
+			font-weight: bolder;
+			font-size: 0.75em;
+			padding-left: 5px;
+			color: white;
+		}
+
+		.login-box, .register-box {
+			width: 400px;
+		}
+
+		.double-underline {
+			text-decoration:underline;
+			font-weight: bold;
+			border-bottom: 1px solid rgb(90, 176, 247);
+		}
+	</style>
     <form action="{{ $login_url }}" method="post">
         @csrf
 
@@ -78,7 +96,6 @@
                 </button>
             </div>
         </div>
-
     </form>
 @stop
 
@@ -93,11 +110,33 @@
     @endif
 
     {{-- Register link --}}
-    @if($register_url)
-        <p class="my-0">
-            <a href="{{ $register_url }}">
-                {{ __('adminlte::adminlte.register_a_new_membership') }}
-            </a>
-        </p>
-    @endif
+    <center>
+		@if($register_url)
+		<p class="my-0">
+			<a href="{{ $register_url }}">
+				Daftar user baru
+			</a> ||
+			<a href="#" data-toggle="modal" data-target="#exampleModal">
+				<span class="badge badge-dark">Lihat panduan dan draft</span>
+			</a>
+		</p>
+		@endif
+	</center>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Unduh Berkas</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<a href="#"><i class="far fa-file-alt"></i> Panduan penggunaan aplikasi</a><hr>
+					<a href="{{ asset('files/draft_moa.docx') }}"><i class="far fa-file-alt"></i> Draft permohonan kerjasama</a>
+				</div>
+			</div>
+		</div>
+	</div>
 @stop

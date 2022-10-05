@@ -110,7 +110,7 @@ Route::middleware(['auth', 'set.locale'])->group(function () {
 	Route::controller(PersetujuanWdController::class)->name('persetujuan.')->middleware(['permission:persetujuan'])->group(function(){
 		Route::get('persetujuan', 'index')->name('index');
 		Route::get('persetujuan/detail/{id}', 'detail')->name('detail');
-		Route::post('persetujuan/{id}', 'persetujuan')->name('persetujuan');
+		Route::post('persetujuan/{id}', 'approve')->name('approve');
 		Route::post('persetujuan/{id}/tolak', 'reject')->name('tolak');
 	});
 

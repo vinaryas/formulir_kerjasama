@@ -87,9 +87,16 @@
 		</div><hr>
 
 		<div class="row">
-			<div class="col-md-12"><strong>File Pengajuan:</strong></div>
+			<div class="col-md-12"><strong>Surat Pengantar:</strong></div>
 			<div class="col-md-12">
 				<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+			</div>
+		</div><hr>
+
+		<div class="row">
+			<div class="col-md-12"><strong>Draft Perjanjian:</strong></div>
+			<div class="col-md-12">
+				<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
 			</div>
 		</div><hr>
 
