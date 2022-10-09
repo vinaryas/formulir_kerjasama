@@ -34,7 +34,7 @@ class ReviewController extends Controller
                 'reviewed_at' => now(),
                 'last_role' => $roleUsers->role_id,
                 'next_role' => config('setting_app.role_id.no_next'),
-                'status'=> 20
+                'status'=> config('setting_app.status.selesai')
             ];
 
             $updateStatus = StepKerjasamaService::update($dataApp, $request->form_id);

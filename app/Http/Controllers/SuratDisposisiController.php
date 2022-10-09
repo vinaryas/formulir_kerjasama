@@ -11,45 +11,37 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DispositionController extends Controller
+class SuratDispositionController extends Controller
 {
-    public function index(){
-        $forms = StepKerjasamaService::getStatusDisposition()->get();
-
-        return view('Disposition.index', compact('forms'));
-    }
-
     public function detail($id){
         $forms = FormService::getById($id)->first();
-        $wakilDekan = RoleService::getWakilDekan()->get();
 
-        return view('Disposition.detail', compact('forms', 'wakilDekan'));
+        return view('Disposition.surat', compact('forms'));
     }
 
     public function store(Request $request){
         DB::beginTransaction();
         $roleUsers = RoleUserService::getRoleFromUserId(Auth::user()->id)->first();
-
         try{
             $dataApp = [
-                'disposition_by' => Auth::user()->id,
-                'disposition_at' => now(),
+                'form_id' => $request->form_id,
+                'approved_by' => Auth::user()->id,
+                'approved_at' => now(),
                 'last_role' => $roleUsers->role_id,
-                'next_role' => $request->next_role_id,
-                'status'=> config('setting_app.status.wakil_dekan')
+                'next_role' => config('setting_app.role_id.reviewer'),
+                'status'=> config('setting_app.status.reviewer')
             ];
 
             $updateStatus = StepKerjasamaService::update($dataApp, $request->form_id);
-
             DB::commit();
 
             Alert::success('Approved', 'form has been approved');
-            return redirect()->route('disposition.index');
+            return redirect()->route('approval.index');
         }catch(\Throwable $th){
             DB::rollback();
             dd($th->getMessage());
             Alert::error('Error!!',);
-            return redirect()->route('disposition.index');
+            return redirect()->route('approval.index');
         }
     }
 }

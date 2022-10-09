@@ -33,7 +33,7 @@
                         <td>{{ $form->pic_mitra }}</td>
                         <td>
                             <center>
-                                <a href="{{ route('disposition.detail', $form->form_id) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+                                <a href="{{ route('surat.detail', $form->form_id) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
                             </center>
                         </td>
                     </tr>

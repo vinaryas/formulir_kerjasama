@@ -54,7 +54,7 @@ class FormController extends Controller
                 'created_by' => Auth::user()->id,
                 'last_role' => $roleUsers->role_id,
                 'next_role' => config('setting_app.role_id.admin'),
-                'status'=> 1
+                'status'=> config('setting_app.status.disposition')
             ];
 
             $updateStatus = StepKerjasamaService::store($dataApp);

@@ -75,7 +75,7 @@ class StepKerjasamaService
 
     public function getStatusDisposition()
     {
-        return $this->joinForm()->where('status', config('setting_app.status.disposisi'));
+        return $this->joinForm()->where('status', config('setting_app.status.disposition'));
     }
 
     public function getStatusWakilDekan($roleId)

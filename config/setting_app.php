@@ -11,9 +11,10 @@ return [
         'reviewer' => 5,
     ],
     'status' => [
-        'disposisi' => 1,
+        'disposition' => 1,
         'wakil_dekan' => 2,
         'reviewer' => 3,
+        'surat_disposition' => 5,
         'ditolak_wakil_dekan' => 10,
         'selesai' => 20,
     ]

@@ -39,8 +39,8 @@ class ApprovalController extends Controller
                     'approved_by' => Auth::user()->id,
                     'approved_at' => now(),
                     'last_role' => $roleUsers->role_id,
-                    'next_role' => config('setting_app.role_id.reviewer'),
-                    'status'=> 3
+                    'next_role' => config('setting_app.role_id.admin'),
+                    'status'=> config('setting_app.status.surat_dispositon')
                 ];
 
                 $updateStatus = StepKerjasamaService::update($dataApp, $request->form_id);
@@ -62,7 +62,7 @@ class ApprovalController extends Controller
                     'rejected_at' => now(),
                     'last_role' => $roleUsers->role_id,
                     'next_role' => config('setting_app.role_id.no_next'),
-                    'status'=> 10
+                    'status'=> config('setting_app.status.ditolak_wakil_dekan')
                 ];
 
                 $updateStatus = StepKerjasamaService::update($dataApp, $request->form_id);

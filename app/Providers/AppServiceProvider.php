@@ -96,7 +96,7 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('form.index'),
                 'icon' => 'fas fa-file-alt',
                 'active' => ['form*'],
-				// 'permission' => 'pengajuan',
+				'permission' => 'pengajuan',
             ]);
 
             $event->menu->add([
@@ -104,15 +104,23 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('disposition.index'),
                 'icon' => 'fas fa-file-alt',
                 'active' => ['disposition*'],
-				// 'permission' => 'disposition',
+				'permission' => 'disposition',
             ]);
+
+            // $event->menu->add([
+            //     'text' => 'Surat Disposisi',
+            //     'url' => route('disposition.index'),
+            //     'icon' => 'fas fa-file-alt',
+            //     'active' => ['disposition*'],
+			// 	'permission' => 'disposition',
+            // ]);
 
 			$event->menu->add([
                 'text' => 'Approval',
                 'url' => route('approval.index'),
                 'icon' => 'fas fa-file-signature',
                 'active' => ['approval*'],
-				// 'permission' => 'persetujuan',
+				'permission' => 'persetujuan',
             ]);
 
             $event->menu->add([
@@ -120,7 +128,7 @@ class AppServiceProvider extends ServiceProvider
                 'url' => route('review.index'),
                 'icon' => 'fas fa-file-signature',
                 'active' => ['review*'],
-				// 'permission' => 'disposition',
+				'permission' => 'review',
             ]);
 
         });
