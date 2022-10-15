@@ -87,25 +87,20 @@
 		</div><hr>
 
 		<div class="row">
-			<div class="col-md-12"><strong>Surat Pengantar:</strong></div>
-			<div class="col-md-12">
-				<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
-			</div>
-
-			<div class="d-flex flex-row">
+			<div class="d-flex flex-wrap">
 				@if ($submission->file != null)
 				<div class="p-2">
-					<a href="{{ asset('storage/file/' . $submission->file) }}" target="_blank"><i class="fas fa-file-word"></i> Draft PKS</a>
+					<a href="#"><i class="fas fa-file-word"></i> Draft PKS</a>
 				</div>
 				@endif
 				@if ($submission->file_perjanjian != null)
 				<div class="p-2">
-					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" target="_blank"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
+					<a href="#"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
 				</div>
 				@endif
 				@if ($submission->file_review != null)
 				<div class="p-2">
-					<a href="{{ asset('storage/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
+					<a href="#"><i class="fas fa-file-word"></i> Dokumen Review</a>
 				</div>
 				@endif
 			</div>
@@ -115,6 +110,11 @@
             <div class="float-left">
                 <a href="{{ route('form.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Kembali </a>
             </div>
+			<div class="float-right">
+				@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir') and Auth::user()->hasRole('admin'))
+					<a href="{{ route('form.done', $submission->id) }}" class="btn btn-primary"><i class="fas fa-check"></i> Selesaikan permohonan </a>
+				@endif
+			</div>
         </div>
     </div>
 </form>

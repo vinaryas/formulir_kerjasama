@@ -1,5 +1,5 @@
 <div class="list-group">
-	@foreach ($submissions as $submission)
+	@forelse ($submissions as $submission)
 		<div class="list-group-item list-group-item-action flex-column align-items-start">
 			<div class="d-flex w-100 justify-content-between">
 				<h5 class="mb-1">{{ $submission->nama_mitra_kerjasama }}</h5>
@@ -10,25 +10,25 @@
 			<small>{{ $submission->pic_mitra }} <strong>({{ $submission->no_telp }})</strong></small>
 			<div>
 				@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.pengecekan_awal'))
-				<span class="badge badge-primary">Pengecekan awal</span>
+				<span class="badge badge-primary">Pengecekan Awal</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.persetujuan_wd'))
 				<span class="badge badge-primary">Persetujuan Wakil Dekan</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.upload_disposisi'))
-				<span class="badge badge-primary">Upload disposisi</span>
+				<span class="badge badge-primary">Upload Disposisi</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.review'))
 				<span class="badge badge-primary">Review</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir'))
-				<span class="badge badge-primary">Review</span>
+				<span class="badge badge-primary">Pengecekan Akhir</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.upload_final'))
 				<span class="badge badge-primary">Upload Berkas Final</span>
-				@elseif ($submission->status == 10)
+				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.ditolak_wd'))
 				<span class="badge badge-danger">Ditolak Wakil Dekan</span>
-				@elseif ($submission->status == 20)
+				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.selesai'))
 				<span class="badge badge-success">Selesai</span>
 				@endif
 			</div>
 
-			<div class="d-flex flex-row">
+			<div class="d-flex flex-wrap pt-2">
 				@if ($submission->file != null)
 				<div class="p-2">
 					<a href="#"><i class="fas fa-file-word"></i> Draft PKS</a>
@@ -45,6 +45,7 @@
 				</div>
 				@endif
 			</div>
+
 			<hr>
 			<div class="float-right">
 				<div class="btn-group">
@@ -53,10 +54,6 @@
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a class="dropdown-item" href="{{ route('form.detail', $submission->id) }}">Detail</a>
-						@if ($submission->status > config('kerjasama.code_detail.status_pengajuan.review'))
-							<a class="dropdown-item btn-hasil-review" href="#" data-submission-id="{{ $submission->id }}">Hasil Review</a>
-						@endif
-
 						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.pengecekan_awal') and Auth::user()->isAbleTo('disposisi'))
 							<a class="dropdown-item" href="{{ route('disposisition.detail', $submission->id) }}">Disposisi</a>
 						@endif
@@ -69,11 +66,16 @@
 						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.review') and Auth::user()->isAbleTo('review'))
 							<a class="dropdown-item" href="{{ route('review.detail', $submission->id) }}">Review</a>
 						@endif
+						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.upload_final'))
+							<a class="dropdown-item btn-hasil-review" href="#" data-submission-id="{{ $submission->id }}">Hasil Review</a>
+						@endif
 					</div>
 				</div>
 			</div>
 		</div>
-	@endforeach
+	@empty
+		<p>Tidak ada pengajuan</p>
+	@endforelse
 </div>
 
 <div class="pt-2">

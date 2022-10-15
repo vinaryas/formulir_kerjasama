@@ -19,7 +19,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 class FormController extends Controller
 {
     public function index(){
-        $submissions = FormService::all()->orderBy('created_at', 'desc')->paginate(5);
+        if(Auth::user()->hasRole('user')){
+			$submissions = FormService::all()->where('created_by', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+		}else{
+			$submissions = FormService::all()->orderBy('created_at', 'desc')->paginate(5);
+		}
 
         return view('Form.index', compact('submissions'));
     }
@@ -35,6 +39,18 @@ class FormController extends Controller
 		$submission = FormService::getById($id)->first();
 
 		return view('Form.detail', compact('submission'));
+	}
+
+	public function done($id)
+	{
+		$data = [
+			'status' => config('kerjasama.code_detail.status_pengajuan.selesai'),
+		];
+
+		$res = FormService::update($data, $id);
+
+		Alert::success('succes', 'Form sudah dikirimkan ke pemohon');
+		return redirect()->route('form.index');
 	}
 
     public function create(){
@@ -58,7 +74,8 @@ class FormController extends Controller
 			$request->request->add([
 				'file' => $file['name'],
 				'file_perjanjian' => $filePerjanjian['name'],
-				'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_awal')
+				'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_awal'),
+				'created_by' => Auth::user()->id
 			]);
 
             $storeData = FormService::store($request->except('_token', 'file_kerjasama', 'file_perjanjian_kerjasama'));
