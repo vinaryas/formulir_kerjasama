@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<form class="card" action="{{ route('persetujuan.approve', $submission->id) }}" method="POST" enctype="multipart/form-data">
+<form class="card" action="#" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="card-body">
 
@@ -91,26 +91,29 @@
 			<div class="col-md-12">
 				<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
 			</div>
-		</div><hr>
 
-		<div class="row">
-			<div class="col-md-12"><strong>Draft Perjanjian:</strong></div>
-			<div class="col-md-12">
-				<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+			<div class="d-flex flex-row">
+				@if ($submission->file != null)
+				<div class="p-2">
+					<a href="{{ asset('storage/file/' . $submission->file) }}" target="_blank"><i class="fas fa-file-word"></i> Draft PKS</a>
+				</div>
+				@endif
+				@if ($submission->file_perjanjian != null)
+				<div class="p-2">
+					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" target="_blank"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
+				</div>
+				@endif
+				@if ($submission->file_review != null)
+				<div class="p-2">
+					<a href="{{ asset('storage/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
+				</div>
+				@endif
 			</div>
 		</div><hr>
 
         <div class="form-group">
             <div class="float-left">
-                <a href="{{ route('persetujuan.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Batal </a>
-            </div>
-            <div class="float-right">
-                <button type="button" class="btn btn-warning" id="btn-tolak" {{ ($submission->status > 2) ? 'disabled' : '' }}>
-                    <i class="fas fa-times"></i> Tolak
-                </button>
-				<button type="submit" class="btn btn-success" onclick="this.form.submit(); this.disabled = true; this.value = 'Submitting the form';" {{ ($submission->status > 2) ? 'disabled' : '' }}>
-                    <i class="fas fa-check"></i> Setujui
-                </button>
+                <a href="{{ route('form.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Kembali </a>
             </div>
         </div>
     </div>
@@ -119,37 +122,5 @@
 
 @section('js')
     <script>
-        $(document).ready(function () {
-            $('#table').DataTable();
-
-			$('#btn-tolak').click(function (e) { 
-				e.preventDefault();
-				
-				Swal.fire({
-					title: 'Yakin ingin menolak permohonan ini?',
-					text: "Pastikan sudah melakukan pengecekan permohonan!",
-					icon: 'warning',
-					showCancelButton: true,
-					confirmButtonColor: '#3085d6',
-					cancelButtonColor: '#d33',
-					confirmButtonText: 'Tolak!'
-				}).then((result) => {
-					if (result.isConfirmed) {
-						var url = '{!! route("persetujuan.tolak",":id") !!}';
-						url = url.replace(':id', '{!! $submission->id !!}');
-						var form_data = {
-							_token:'{{ csrf_token() }}',
-							_method:'POST',
-						};
-						
-						$.post(url, form_data, function(response, textStatus, xhr) {
-							console.log(response);
-							// toast(response.alert);
-							// $('#t_barang').DataTable().draw();
-						});
-					}
-				})
-			});
-        });
     </script>
 @stop

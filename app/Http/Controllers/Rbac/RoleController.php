@@ -124,6 +124,7 @@ class RoleController extends Controller
 
     public function select2(Request $request, UserService $userService)
     {
+		dd('test');
         $roleId = ($userService->isAdministrator()) ? 0 : 1;
 
         $role = DB::table('roles')->select('*');

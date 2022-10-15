@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $events)
     {
+		Paginator::useBootstrap();
+		
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $event->menu->add([
                 'text' => 'Dashboard',
@@ -96,23 +99,23 @@ class AppServiceProvider extends ServiceProvider
                 'text' => __('submission.menu.submission'),
                 'url' => route('form.index'),
                 'icon' => 'fas fa-file-alt',
-                'active' => ['form*'],
+                'active' => ['form*', 'disposisi*'],
 				'permission' => 'pengajuan',
             ]);
 
-			$event->menu->add([
-                'text' => __('submission.menu.disposition'),
-                'url' => route('disposisition.index'),
-                'icon' => 'fas fa-file-signature',
-                'active' => ['approval*'],
-				'permission' => 'disposisi',
-            ]);
+			// $event->menu->add([
+            //     'text' => __('submission.menu.disposition'),
+            //     'url' => route('disposisition.index'),
+            //     'icon' => 'fas fa-file-signature',
+            //     'active' => ['approval*'],
+			// 	'permission' => 'disposisi',
+            // ]);
 
 			$event->menu->add([
                 'text' => __('submission.menu.approval'),
                 'url' => route('persetujuan.index'),
                 'icon' => 'fas fa-file-signature',
-                'active' => ['approval*'],
+                'active' => ['approval*', 'persetujuan*'],
 				'permission' => 'persetujuan',
             ]);
 

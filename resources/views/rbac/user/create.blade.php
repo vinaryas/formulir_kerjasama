@@ -43,19 +43,24 @@
 				</div>
 			</div>
 			
-			{{-- <div class="form-group">
+			<div class="form-group">
 				<label for="level">Email</label>
 				<div class="input-value">
 					<input type="email" class="form-control form-control-sm" id="email" name="email">
 					<div id="feedback_email" class="feedback text-danger d-none"></div>
 				</div>
-			</div> --}}
+			</div>
 			
 			<div class="form-group">
 				<label for="level">Role</label>
 				<div class="input-value">
-					<select name="jabatan_id" id="jabatan_id" class="" style="width: 100%;"></select>
-					<div id="feedback_jabatan_id" class="feedback text-danger d-none"></div>
+					<select name="role_id" id="role_id" class="select2" style="width: 100%;">
+						<option value=""></option>
+						@foreach ($roles as $role)
+							<option value="{{ $role->id }}">{{ $role->name }}</option>
+						@endforeach
+					</select>
+					<div id="feedback_role_id" class="feedback text-danger d-none"></div>
 				</div>
 			</div>
 			
@@ -90,15 +95,8 @@
 @stop
 
 @section('js')
-<script src="{{ asset('js/mySelect.js') }}"></script>
+@include('components.select2')
 <script>
-	$(document).ready(function () {
-		setSelect2('#jabatan_id', '{{ route('role.select2') }}', '...', _data = function (params) {
-			return {
-				nama: $.trim(params.term)
-			};
-		});
-	});
 </script>
 
 @stop

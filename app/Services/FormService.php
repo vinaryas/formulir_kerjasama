@@ -33,9 +33,16 @@ class FormService
 		return $this->Form->where('id', $id)->update($data);
 	}
 	
-	public function getDisposition()
+	public function getFirstCheck()
 	{
-		return $this->all()->where('status', config('kerjasama.code_detail.status_pengajuan.disposisi'));
+		return $this->all()
+				->where('status', config('kerjasama.code_detail.status_pengajuan.pengecekan_awal'))
+				->orWhere('status', config('kerjasama.code_detail.status_pengajuan.upload_disposisi'));
+	}
+
+	public function getUploadDisposition()
+	{
+		return $this->all()->where('status', config('kerjasama.code_detail.status_pengajuan.upload_disposisi'));
 	}
 
 	public function getApprovalWd()
@@ -46,5 +53,13 @@ class FormService
 	public function getReview()
 	{
 		return $this->all()->where('status', config('kerjasama.code_detail.status_pengajuan.review'));
+	}
+
+	public function getDataAdmin()
+	{
+		return $this->all()
+				->where('status', config('kerjasama.code_detail.status_pengajuan.pengecekan_awal'))
+				->orWhere('status', config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir'))
+				->orWhere('status', config('kerjasama.code_detail.status_pengajuan.upload_disposisi'));
 	}
 }

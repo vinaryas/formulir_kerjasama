@@ -77,7 +77,7 @@
 
 </head>
 
-<body class="@yield('classes_body')" @yield('body_data') style="background-image: url('{{ asset('images/bg-login.jpg') }}'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; background-color:rgba(0, 0, 0, 0.5);">
+<body class="@yield('classes_body')" @yield('body_data')>
 
     {{-- Body Content --}}
     @yield('body')

@@ -9,6 +9,7 @@ use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\PersetujuanWdController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UploadDisposisiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -89,8 +90,9 @@ Route::middleware(['auth', 'set.locale'])->group(function () {
 
 	Route::group(['prefix' => 'form'], function(){
 		Route::get('', [FormController::class, 'index'])->name('form.index');
-	//  Route::get('//detail/{id}', [formController::class, 'detail'])->name('form.detail');
+		Route::get('/detail/{id}', [formController::class, 'detail'])->name('form.detail');
 		Route::get('/create', [formController::class, 'create'])->name('form.create');
+		Route::get('/show/{id}', [formController::class, 'show'])->name('form.show');
 		Route::post('/store', [formController::class, 'store'])->name('form.store');
 	});
 
@@ -105,6 +107,12 @@ Route::middleware(['auth', 'set.locale'])->group(function () {
 		Route::get('disposisi', 'index')->name('index');
 		Route::get('disposisi/detail/{id}', 'detail')->name('detail');
 		Route::post('disposisi/{id}', 'disposition')->name('disposition');
+	});
+
+	Route::controller(UploadDisposisiController::class)->name('uploadDisposisition.')->middleware(['permission:disposisi'])->group(function(){
+		Route::get('upload_disposisi', 'index')->name('index');
+		Route::get('upload_disposisi/detail/{id}', 'detail')->name('detail');
+		Route::post('upload_disposisi/{id}', 'update')->name('update');
 	});
 
 	Route::controller(PersetujuanWdController::class)->name('persetujuan.')->middleware(['permission:persetujuan'])->group(function(){

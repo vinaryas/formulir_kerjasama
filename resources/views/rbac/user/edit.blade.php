@@ -44,25 +44,30 @@
 				</div>
 			</div>
 			
-			{{-- <div class="form-group">
+			<div class="form-group">
 				<label for="level">Email</label>
 				<div class="input-value">
-					<input type="email" class="form-control form-control-sm" id="email" name="email" >
+					<input type="email" class="form-control form-control-sm" id="email" name="email" value="{{ $user->email }}">
 					<div id="feedback_email" class="feedback text-danger d-none"></div>
-				</div>
-			</div> --}}
-			
-			<div class="form-group">
-				<label for="level">Role</label>
-				<div class="input-value">
-					<select name="jabatan_id" id="jabatan_id" class="" style="width: 100%;"></select>
-					<div id="feedback_jabatan_id" class="feedback text-danger d-none"></div>
 				</div>
 			</div>
 			
 			<div class="form-group">
-				<input type="submit" class="btn btn-primary btn-sm" value="Simpan">
-				<a href="{{ route('user.index') }}" class="btn btn-danger float-right">Batal</a>
+				<label for="level">Role</label>
+				<div class="input-value">
+					<select name="role_id" id="role_id" class="select2" style="width: 100%;">
+						<option value=""></option>
+						@foreach ($roles as $role)
+							<option value="{{ $role->id }}" {{ ($role->id == $user->RoleUser->role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
+						@endforeach
+					</select>
+					<div id="feedback_role_id" class="feedback text-danger d-none"></div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary btn-sm float-right" value="Simpan">
+				<a href="{{ route('user.index') }}" class="btn btn-danger">Batal</a>
 			</div>
 		</form>
 	</div>
@@ -76,22 +81,10 @@
 @include('components.select2')
 <script>
 	$(document).ready(function () {
-		let user = {!! $user !!};
-
-		console.log(user);
-
 		$('#jenis_kelamin').select2({
 			placeholder: '...',
 			allowClear: true
 		});
-
-		setSelect2('#jabatan_id', '{{ route('role.select2') }}', '...', _data = function (params) {
-			return {
-				nama: $.trim(params.term)
-			};
-		});
-
-		setSelectedSelect2('#jabatan_id', user.jabatan, 'id', 'nama');
 	});
 </script>
 

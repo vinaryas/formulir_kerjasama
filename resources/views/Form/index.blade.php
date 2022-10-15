@@ -9,67 +9,77 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('form.create') }}" class="btn btn-info"><i class="fas fa-file"></i> Buat Form </a>
+        @if (Auth::user()->hasRole('user'))
+		<a href="{{ route('form.create') }}" class="btn btn-primary"><i class="fas fa-file"></i> Buat Pengajuan </a>
+		@endif
     </div>
     <div class="card-body">
-        <table class="table table-bordered dt-responsive table-striped table-sm" id="t_kerjasama" style="width: 100%">
-            <thead>
-                <tr>
-                    <th> No. </th>
-                    <th> Jenis Kerjasama</th>
-                    <th> Jenis Pengajuan </th>
-                    <th> Nama Mitra Kerjasama </th>
-                    <th> Kategori Mitra </th>
-                    <th> Surat Pengantar </th>
-                    <th> Draft Perjanjian </th>
-                    <th> Status </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($forms as $form)
-                    <tr>
-                        <td> 1 </td>
-                        <td>{{ $form->jenisKerjasama->kerjasama }}</td>
-                        <td>{{ $form->jenisPengajuan->pengajuan }}</td>
-                        <td>{{ $form->nama_mitra_kerjasama }}</td>
-                        <td>{{ $form->kategoriMitra->kategori }}</td>
-                        <td>
-							<center>
-								<a href="{{ asset('storage/file/' . $form->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
-							</center>
-						</td>
-						<td>
-							<center>
-								<a href="{{ asset('storage/file/' . $form->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
-							</center>
-						</td>
-						<td>
-							@if ($form->status == 1)
-							<span class="badge badge-primary">Pengecekan Admin</span>
-							@elseif ($form->status == 2)
-							<span class="badge badge-primary">Persetujuan Wakil Dekan</span>
-							@elseif ($form->status == 3)
-							<span class="badge badge-primary">Review KA Unit</span>
-							@elseif ($form->status == 10)
-							<span class="badge badge-danger">Ditolak</span>
-							@elseif ($form->status == 20)
-							<span class="badge badge-success">Selesai</span>
-							@endif
-						</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+
+		@include('Form.list')
+
     </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="modal-detail" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Finalisasi Pengajuan</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Pengajuan anda telah selesai direview. Hasil rewiew adalah:</p><hr>
+				
+				<div id="comment-reviewer">
+					
+				</div>
+				<hr>
+				<p>Draft hasil review telah kami kirimkan ke email yang didaftarkan saat membuat akun. Mohon untuk memerika kembali.</p>
+				<p>
+					Jika ada perubahan atau penambahan dan hal-hal lain yang perlu didiskusikan, silahkan hubungi <strong>nama pic</strong>, dengan nomer kontak <strong>08112312312</strong>
+				</p>
+				<p>Jika draft sudah final dan tidak ada revisi lagi, silahkan unggah pada form dibawah</p>
+				<div>
+					<input type="file" class="form-control form-control-sm" name="" id="">
+				</div>
+				<div class="mt-2">
+					<input type="checkbox" name="" id=""> Saya sudah memastikan jika berkas yang diupload adalah berkas yang sudah final.
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+				<button type="button" class="btn btn-primary">Simpan Draft Final</button>
+			</div>
+		</div>
+	</div>
 </div>
 @stop
 
 @section('js')
     <script>
         $(document).ready(function () {
-            $('#t_kerjasama').DataTable({
+            var t_kerjasama = $('#t_kerjasama').DataTable({
 				'scrollX': true
 			});
-        });
+
+			$('.btn-hasil-review').click(function (e) { 
+				e.preventDefault();
+				let submissionId = $(this).data('submissionId');
+				var url = '{!! route("form.show",":id") !!}';
+                url = url.replace(':id',submissionId);
+
+				$.ajax({
+					type: "GET",
+					url: url,
+					success: function (response) {
+						console.log(response);
+						$('#comment-reviewer').html(response.comment);
+						$('#modal-detail').modal('toggle');
+					}
+				});
+			});
+		})
     </script>
 @stop

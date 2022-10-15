@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\StoreFile;
+use App\Http\Requests\ReviewRequest;
 use App\Services\support\FormService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +13,7 @@ class ReviewController extends Controller
 {
     public function index()
 	{
-		$submissions = FormService::getreview()->get();
+		$submissions = FormService::getreview()->paginate(5);
 		
 		return view('review.index', compact('submissions'));
 	}
@@ -23,26 +25,27 @@ class ReviewController extends Controller
 		return view('review.detail', compact('submission'));
 	}
 
-	public function review(Request $request, $id)
+	public function review(ReviewRequest $request, $id)
 	{
 		try {
+			$allowedfileExtension = ['doc', 'docx'];
+			$fileReview = StoreFile::storeFile($request->file_review, config('kerjasama.file_path'), $allowedfileExtension);
+
 			$data = [
-				'status' => 20,
+				'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir'),
 				'reviewed_by' => Auth::user()->id,
-				'reviewed_at' => now()
+				'reviewed_at' => now(),
+				'comment' => $request->comment,
+				'file_review' => $fileReview['name'],
 			];
 	
 			$res = FormService::update($data, $id);
 
-			return [
-				'success' => true,
-			];
+			Alert::success('succes', 'form berhasil disimpan');
+			return redirect()->route('form.index');
 		} catch (\Throwable $th) {
-			return [
-				'success' => false,
-				'message' => $th->getMessage(),
-				'trace' => $th->getTrace()
-			];
+			dd($th->getMessage(), $th->getTrace());
+			return redirect()->route('form.index');
 		}
 	}
 }

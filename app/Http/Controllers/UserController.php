@@ -72,7 +72,11 @@ class UserController extends Controller
 
     public function create()
     {
-		return view('rbac.user.create');
+		$roleId = ($this->userService->isAdministrator()) ? 0 : 1;
+
+        $roles = DB::table('roles')->select('*')->where('id', '>', $roleId)->get();
+				
+		return view('rbac.user.create', compact('roles'));
     }
 
     public function store(Request $request, UserService $userService)
@@ -111,9 +115,11 @@ class UserController extends Controller
 
     public function edit($id)
     {
+		$roleId = ($this->userService->isAdministrator()) ? 0 : 1;
         $user = $this->userService->find($id)->first();
+        $roles = DB::table('roles')->select('*')->where('id', '>', $roleId)->get();
 
-        return view('rbac.user.edit', compact('user'));
+        return view('rbac.user.edit', compact('user', 'roles'));
     }
 
 	public function editProfile($id)
@@ -130,11 +136,11 @@ class UserController extends Controller
 
     public function update(Request $request, UserService $userService, $id)
     {
-		$roleId = $request->jabatan_id;
-		$res = $userService->updateData($request->except('_token', '_method', 'password_confirmation', 'password'), $id);
+		$roleId = $request->role_id;
+		$res = $userService->updateData($request->except('_token', '_method', 'role_id', 'password_confirmation', 'password'), $id);
 
 		if($request->password != null){
-			$userService->updatePassword($request->except('_token', '_method', 'jabatan_id', 'password_confirmation'), $id);
+			$userService->updatePassword($request->except('_token', '_method', 'role_id', 'password_confirmation'), $id);
 		}
 
 		if($roleId != null){

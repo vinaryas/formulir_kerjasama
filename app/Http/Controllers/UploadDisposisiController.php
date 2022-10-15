@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class DisposisiController extends Controller
+class UploadDisposisiController extends Controller
 {
     public function index()
 	{
-		$submissions = FormService::getFirstCheck()->paginate(5);
+		$submissions = FormService::getUploadDisposition()->get();
 		
 		return view('disposisi.index', compact('submissions'));
 	}
@@ -20,20 +20,13 @@ class DisposisiController extends Controller
 	{
 		$submission = FormService::getById($id)->first();
 
-		return view('disposisi.detail1', compact('submission'));
-	}
-
-	public function detail2($id)
-	{
-		$submission = FormService::getById($id)->first();
-
 		return view('disposisi.detail2', compact('submission'));
 	}
 
-	public function disposition(Request $request, $id)
+	public function update(Request $request, $id)
 	{
 		$data = [
-			'status' => config('kerjasama.code_detail.status_pengajuan.persetujuan_wd'),
+			'status' => config('kerjasama.code_detail.status_pengajuan.review'),
 			'disposition_by' => Auth::user()->id,
 			'disposition_at' => now()
 		];

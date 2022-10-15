@@ -10,94 +10,31 @@
 <form class="card" action="{{ route('review.review', $submission->id) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="card-body">
+		@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+		@endif
+
+		@include('disposisi.detail')
 
 		<div class="row">
-			<div class="col-md-12"><strong>Jenis Kerjasama:</strong></div>
-			<div class="col-md-12"> {{ $submission->jenisKerjasama->kerjasama }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Jenis Pengajuan:</strong></div>
-			<div class="col-md-12"> {{ $submission->jenisPengajuan->pengajuan }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Nama Mitra Kerjasama:</strong></div>
-			<div class="col-md-12"> {{ $submission->nama_mitra_kerjasama }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Alamat Mitra Kerjasama:</strong></div>
-			<div class="col-md-12"> {{ $submission->alamat_mitra_kerjasama }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Kategori Mitra:</strong></div>
-			<div class="col-md-12"> {{ $submission->kategoriMitra->kategori }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>PIC Mitra:</strong></div>
-			<div class="col-md-12"> {{ $submission->pic_mitra }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Unit Mitra:</strong></div>
-			<div class="col-md-12"> {{ $submission->nama_unit }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Jabatan Mitra:</strong></div>
-			<div class="col-md-12"> {{ $submission->jabatan }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Telp Mitra:</strong></div>
-			<div class="col-md-12"> {{ $submission->no_telp }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Email Mitra:</strong></div>
-			<div class="col-md-12"> {{ $submission->email }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Lingkup Kerjasama:</strong></div>
-			<div class="col-md-12"> {{ $submission->lingkup_kerjasama }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Rencana Kegiatan:</strong></div>
-			<div class="col-md-12"> {{ $submission->rencana_kegiatan }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Rencana Formalisasi:</strong></div>
-			<div class="col-md-12"> {{ $submission->rencanaFormalisasi->rencana }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Tanggal Kegiatan:</strong></div>
-			<div class="col-md-12"> {{ Carbon\Carbon::parse($submission->tgl)->format('d-M-y') }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Tempat Kegiatan:</strong></div>
-			<div class="col-md-12"> {{ $submission->tempat_kegiatan }}</div>
-		</div><hr>
-
-		<div class="row">
-			<div class="col-md-12"><strong>Surat Pengantar:</strong></div>
 			<div class="col-md-12">
-				<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+				<label for=""><strong>File Review:</strong></label>
+				<div>
+					<span class="badge badge-warning">Dokumen yang diijinkan adalah <strong>word (doc, docx)</strong>. Maksimal 1MB.</span>
+				</div>
+				<input type="file" name="file_review" class="form-control">
 			</div>
 		</div><hr>
 
 		<div class="row">
-			<div class="col-md-12"><strong>Draft Perjanjian:</strong></div>
-			<div class="col-md-12">
-				<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
-			</div>
+			<div class="col-md-12"><strong>Komentar:</strong></div>
+			<textarea class="ml-5 mr-5" name="comment" id="comment" style="width: 100%"></textarea>
 		</div><hr>
 
         <div class="form-group">
@@ -105,8 +42,8 @@
                 <a href="{{ route('review.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Batal </a>
             </div>
             <div class="float-right">
-                <button type="button" class="btn btn-success" id="btn-info" {{ ($submission->status > 3) ? 'disabled' : '' }}>
-                    <i class="fas fa-save"></i> Info ke Pemohon
+                <button type="submit" class="btn btn-success" id="btn-info" {{ ($submission->status > config('kerjasama.code_detail.status_pengajuan.review')) ? 'disabled' : '' }}>
+                    <i class="fas fa-save"></i> Simpan Review
                 </button>
             </div>
         </div>
@@ -115,35 +52,24 @@
 @stop
 
 @section('js')
+	<script src="https://cdn.tiny.cloud/1/l6crvnyyxe537svrrmuu38vxrb2scra5zp2onr04gbfz5hll/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <script>
         $(document).ready(function () {
             $('#table').DataTable();
 
-			$('#btn-info').click(function (e) { 
-				e.preventDefault();
-				
-				Swal.fire({
-					title: 'Yakin ingin menginfokan ke pemohon?',
-					text: "Pastikan sudah melakukan pengecekan permohonan!",
-					icon: 'warning',
-					showCancelButton: true,
-					confirmButtonColor: '#3085d6',
-					cancelButtonColor: '#d33',
-					confirmButtonText: 'Lanjutkan!'
-				}).then((result) => {
-					if (result.isConfirmed) {
-						var url = '{!! route("review.review",":id") !!}';
-						url = url.replace(':id', '{!! $submission->id !!}');
-						var form_data = {
-							_token:'{{ csrf_token() }}',
-							_method:'POST',
-						};
-						
-						$.post(url, form_data, function(response, textStatus, xhr) {
-							console.log(response);
-						});
-					}
-				})
+			tinymce.init({
+				selector: '#comment',
+				tinycomments_mode: 'embedded',
+				skin: 'bootstrap',
+				icons: 'bootstrap',
+				menubar: false,
+				plugins: [
+				"advlist autolink lists link image charmap print preview anchor",
+				"searchreplace visualblocks code fullscreen",
+				"insertdatetime media table contextmenu paste"
+				],
+				toolbar: 'undo redo bold italic bullist numlist',
 			});
         });
     </script>

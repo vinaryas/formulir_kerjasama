@@ -23,6 +23,7 @@ return [
 		],
 		'submission' => 'Submission',
 		'disposition' => 'Disposition',
+		'upload_disposition' => 'Upload Disposition',
 		'approval' => 'Approval',
 		'review' => 'Review'
 	],

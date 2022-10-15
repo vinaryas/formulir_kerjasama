@@ -23,6 +23,7 @@ return [
 		],
 		'submission' => 'Pengajuan',
 		'disposition' => 'Disposisi',
+		'upload_disposition' => 'Unggah Disposisi',
 		'approval' => 'Persetujuan',
 		'review' => 'Review'
 	] ,

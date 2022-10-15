@@ -34,7 +34,7 @@
 					<th class="text-center">ID</th>
                     <th class="text-center">NAME</th>
                     <th class="text-center">USERNAME</th>
-                    <th class="text-center">JABATAN</th>
+                    <th class="text-center">ROLE</th>
                     <th style="width: 5%;" class="text-center">ACTION</th>
                     {{-- <th class="text-center">ROLE</th> --}}
                 </tr>

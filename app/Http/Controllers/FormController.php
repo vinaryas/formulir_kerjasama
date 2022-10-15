@@ -19,10 +19,23 @@ use RealRashid\SweetAlert\Facades\Alert;
 class FormController extends Controller
 {
     public function index(){
-        $forms = FormService::all()->get();
+        $submissions = FormService::all()->orderBy('created_at', 'desc')->paginate(5);
 
-        return view('Form.index', compact('forms'));
+        return view('Form.index', compact('submissions'));
     }
+
+	public function show($id){
+		$submission = FormService::getById($id)->first();
+		
+		return $submission;
+	}
+
+	public function detail($id)
+	{
+		$submission = FormService::getById($id)->first();
+
+		return view('Form.detail', compact('submission'));
+	}
 
     public function create(){
         $user = Auth::user();
@@ -45,7 +58,7 @@ class FormController extends Controller
 			$request->request->add([
 				'file' => $file['name'],
 				'file_perjanjian' => $filePerjanjian['name'],
-				'status' => 1
+				'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_awal')
 			]);
 
             $storeData = FormService::store($request->except('_token', 'file_kerjasama', 'file_perjanjian_kerjasama'));
@@ -55,7 +68,7 @@ class FormController extends Controller
 				'body' => 'Haloo.. ada email terkait pengajuan Kerjasama'
 			];
 		   
-			\Mail::to('susilaandika@gmail.com')->send(new \App\Mail\NotificationMail($details));
+			// \Mail::to('susilaandika@gmail.com')->send(new \App\Mail\NotificationMail($details));
 
             DB::commit();
 

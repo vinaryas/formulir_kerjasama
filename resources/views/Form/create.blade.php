@@ -107,7 +107,7 @@
 
 		<div class="form-group">
 			<label>Tanggal Pengajuan</label>
-			<input type="date" name="tgl" class="form-control form-control-sm">
+			<input type="date" name="tgl" class="form-control form-control-sm" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
 		</div>
 
 		<div class="form-group">
