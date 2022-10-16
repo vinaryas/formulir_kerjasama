@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\support\RencanaFormalisasiService;
+use App\Services\Support\RencanaFormalisasiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

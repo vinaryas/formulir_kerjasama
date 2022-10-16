@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\support\JenisKerjasamaService;
+use App\Services\Support\JenisKerjasamaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\support;
+namespace App\Services\Support;
 
 use App\Services\JenisKerjasamaService as SupportService;
 use Illuminate\Support\Facades\Facade;

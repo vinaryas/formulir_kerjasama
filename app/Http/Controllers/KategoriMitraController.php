@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\support\KategoriMitraService;
+use App\Services\Support\KategoriMitraService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
