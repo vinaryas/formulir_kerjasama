@@ -69,7 +69,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-					<button type="button" class="btn btn-primary disabled btn-draft-final">Simpan Draft Final</button>
+					<button type="button" class="btn btn-primary btn-draft-final" disabled>Simpan Draft Final</button>
 				</div>
 			</form>
 		</div>
@@ -86,6 +86,7 @@
 
 			$('.btn-hasil-review').click(function (e) { 
 				e.preventDefault();
+				
 				let submissionId = $(this).data('submissionId');
 				var url = '{!! route("form.show",":id") !!}';
                 url = url.replace(':id',submissionId);
@@ -105,8 +106,9 @@
 			$(".cb-validate").change(function(e) {
 				if ($(this).prop('checked')){
 					$('.btn-draft-final').removeClass('disabled');
+					$('.btn-draft-final').removeAttr('disabled');
 				}else{
-					$('.btn-draft-final').addClass('disabled');
+					$('.btn-draft-final').attr('disabled', 'disabled');
 				}
 			});
 
@@ -133,6 +135,7 @@
                            $('#alert_final_error').addClass('d-none');
 						   $('#alert_final_success').removeClass('d-none');
 						   $('#alert_final_success').html('File berhasil diunggah');
+						   location.reload();
                         }
                         else{
 							let html = '<ul>';
