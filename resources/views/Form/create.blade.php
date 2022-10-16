@@ -120,7 +120,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="" style="margin-bottom: 1px;">Surat Pengantar Kerjasama*</label>
+			<label class="" style="margin-bottom: 1px;">Draft Perjanjian Kerjasama*</label>
 			<div>
 				<span class="badge badge-warning">Dokumen yang diijinkan adalah <strong>word (doc, docx)</strong>. Maksimal 1MB.</span>
 			</div>
@@ -128,7 +128,7 @@
 		</div>
 
 		<div class="form-group">
-			<label style="margin-bottom: 1px;">Draft Perjanjian Kerjasama*</label>
+			<label style="margin-bottom: 1px;">Surat Pengantar Kerjasama*</label>
 			<div>
 				<span class="badge badge-warning">Dokumen yang diijinkan adalah <strong>PDF</strong>. Maksimal 1MB.</span>
 			</div>

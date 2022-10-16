@@ -95,7 +95,7 @@
 				@endif
 				@if ($submission->file_perjanjian != null)
 				<div class="p-2">
-					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" target="_blank"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
+					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" target="_blank"><i class="fas fa-file-pdf"></i> Surat Pengantar Kerjasama</a>
 				</div>
 				@endif
 				@if ($submission->file_review != null)
