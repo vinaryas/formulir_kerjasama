@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\StoreFile;
 use App\Http\Requests\SubmissionStoreRequest;
+use App\Http\Requests\UploadFinalRequest;
 use App\Services\Support\ApprovalService;
 use App\Services\Support\FormService;
 use App\Services\Support\JenisKerjasamaService;
@@ -14,6 +15,7 @@ use App\Services\Support\RoleUserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -99,4 +101,45 @@ class FormController extends Controller
             return redirect()->route('form.index');
         }
     }
+
+	public function uploadFinal(Request $request, $id)
+	{
+		try {
+			$checkData = Validator::make($request->all(), [
+				'file_final' => 'required|file|mimes:doc,docx|max:1024',
+			], [
+				'file_final.required' => 'Dokumen final wajib diisi',
+				'file_final.file' => 'Dokumen yang diupload harus berupa file',
+				'file_final.mimes' => 'Dokumen yang diijinkan adalah doc/docx',
+				'file_final.max' => 'Dokumen yang diunggah terlalu besar. Maksimal 1MB',
+			]);
+
+			if($checkData->fails()){
+				return [
+					'success' => false,
+					'message' => 'Inputan belum sesuai',
+					'data' => $checkData->errors()
+				];
+			}
+
+			$allowedfileExtension = ['doc', 'docx'];
+			$fileFinal = StoreFile::storeFile($request->file_final, config('kerjasama.file_path'), $allowedfileExtension);
+
+			$data = [
+				'file_final' => $fileFinal['name'],
+			];
+	
+			$res = FormService::update($data, $id);
+
+			return [
+				'success' => true
+			];
+		} catch (\Throwable $th) {
+			return [
+				'success' => false,
+				'message' => $th->getMessage(),
+				'trace' => $th->getTrace()
+			];
+		}
+	}
 }

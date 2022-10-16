@@ -95,6 +95,7 @@ Route::middleware(['auth', 'set.locale'])->group(function () {
 		Route::get('/show/{id}', [formController::class, 'show'])->name('form.show');
 		Route::get('/done/{id}', [formController::class, 'done'])->name('form.done');
 		Route::post('/store', [formController::class, 'store'])->name('form.store');
+		Route::post('/upload_final/{id}', [formController::class, 'uploadFinal'])->name('form.uploadFinal');
 	});
 
 

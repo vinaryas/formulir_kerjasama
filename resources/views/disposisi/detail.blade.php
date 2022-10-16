@@ -87,7 +87,12 @@
 		@endif
 		@if ($submission->file_review != null)
 		<div class="p-2">
-			<a href="{{ asset('storate/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
+			<a href="{{ asset('storage/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
+		</div>
+		@endif
+		@if ($submission->file_final != null)
+		<div class="p-2">
+			<a href="{{ asset('storage/file/' . $submission->file_final) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Draft Final</a>
 		</div>
 		@endif
 	</div>
