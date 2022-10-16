@@ -29,8 +29,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group">
-					<label>Surat Disposisi: </label>
-					<input type="file" name="surat_disposisi" class="form-control form-control-sm" {{ ($submission->status != config('kerjasama.code_detail.status_pengajuan.upload_disposisi')) ? 'disabled' : '' }}>
+					<label>Dokumen Disposisi: </label>
+					<input type="file" name="file_disposition" class="form-control form-control-sm" {{ ($submission->status != config('kerjasama.code_detail.status_pengajuan.upload_disposisi')) ? 'disabled' : '' }}>
 				</div>
 			</div>
 		</div>

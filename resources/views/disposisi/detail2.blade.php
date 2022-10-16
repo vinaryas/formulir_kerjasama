@@ -10,6 +10,15 @@
 <form class="card" action="{{ route('uploadDisposisition.update', $submission->id) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="card-body">
+		@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+		@endif
 
 		@include('disposisi.detail')
 
@@ -29,8 +38,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group">
-					<label>Surat Disposisi: </label>
-					<input type="file" name="surat_disposisi" class="form-control form-control-sm" {{ ($submission->status != config('kerjasama.code_detail.status_pengajuan.upload_disposisi')) ? 'disabled' : '' }}>
+					<label style="margin-bottom: 1px;">Dokumen Disposisi: </label>
+					<div>
+						<span class="badge badge-warning">Dokumen yang diijinkan adalah <strong>word (doc, docx)</strong>. Maksimal 1MB.</span>
+					</div>
+					<input type="file" name="file_disposition" class="form-control form-control-sm" {{ ($submission->status != config('kerjasama.code_detail.status_pengajuan.upload_disposisi')) ? 'disabled' : '' }}>
 				</div>
 			</div>
 		</div>
