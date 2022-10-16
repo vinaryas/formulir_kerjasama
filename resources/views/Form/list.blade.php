@@ -66,7 +66,7 @@
 						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.review') and Auth::user()->isAbleTo('review'))
 							<a class="dropdown-item" href="{{ route('review.detail', $submission->id) }}">Review</a>
 						@endif
-						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.upload_final'))
+						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.selesai'))
 							<a class="dropdown-item btn-hasil-review" href="#" data-submission-id="{{ $submission->id }}">Hasil Review</a>
 						@endif
 					</div>
