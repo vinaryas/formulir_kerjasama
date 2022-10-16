@@ -7,7 +7,14 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+<div class="card text-white bg-success" style="">
+    <div class="card-body">
+        <h5 class="card-title">Selamat datang di Sistem Informasi Pengajuan Kerjasama (<strong>SIKASA</strong>) Fakultas Kedokteran Universitas Warmadewa</h5>
+        <p class="card-text">
+            Silahkan ajukan permohonan kerjasama pada menu pengajuan
+        </p>
+    </div>
+</div>
 @stop
 
 @section('css')
