@@ -11,7 +11,7 @@
     {{ csrf_field() }}
     <div class="card-body">
 
-		@include('Form.detail')
+		@include('disposisi.detail')
 
         <div class="form-group">
             <div class="float-left">

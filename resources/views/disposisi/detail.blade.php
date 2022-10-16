@@ -74,15 +74,21 @@
 </div><hr>
 
 <div class="row">
-	<div class="col-md-12"><strong>Surat Pengantar:</strong></div>
-	<div class="col-md-12">
-		<a href="{{ asset('storage/file/' . $submission->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
-	</div>
-</div><hr>
-
-<div class="row">
-	<div class="col-md-12"><strong>Draft Perjanjian:</strong></div>
-	<div class="col-md-12">
-		<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+	<div class="d-flex flex-wrap">
+		@if ($submission->file != null)
+		<div class="p-2">
+			<a href="{{ asset('storage/file/' . $submission->file) }}" target="_blank"><i class="fas fa-file-word"></i> Draft PKS</a>
+		</div>
+		@endif
+		@if ($submission->file_perjanjian != null)
+		<div class="p-2">
+			<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" target="_blank"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
+		</div>
+		@endif
+		@if ($submission->file_review != null)
+		<div class="p-2">
+			<a href="{{ asset('storate/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
+		</div>
+		@endif
 	</div>
 </div><hr>
