@@ -31,17 +31,17 @@
 			<div class="d-flex flex-wrap pt-2">
 				@if ($submission->file != null)
 				<div class="p-2">
-					<a href="#"><i class="fas fa-file-word"></i> Draft PKS</a>
+					<a href="{{ asset('storage/file/' . $submission->file) }}"><i class="fas fa-file-word"></i> Draft PKS</a>
 				</div>
 				@endif
 				@if ($submission->file_perjanjian != null)
 				<div class="p-2">
-					<a href="#"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
+					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}"><i class="fas fa-file-pdf"></i> Surat Perjanjian</a>
 				</div>
 				@endif
 				@if ($submission->file_review != null)
 				<div class="p-2">
-					<a href="#"><i class="fas fa-file-word"></i> Dokumen Review</a>
+					<a href="{{ asset('storate/file/' . $submission->file_review) }}"><i class="fas fa-file-word"></i> Dokumen Review</a>
 				</div>
 				@endif
 			</div>
