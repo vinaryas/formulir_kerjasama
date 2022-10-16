@@ -98,6 +98,11 @@
 					<a href="{{ asset('storage/file/' . $submission->file_perjanjian) }}" target="_blank"><i class="fas fa-file-pdf"></i> Surat Pengantar Kerjasama</a>
 				</div>
 				@endif
+				@if ($submission->file_disposition != null)
+				<div class="p-2">
+					<a href="{{ asset('storage/file/' . $submission->file_disposition) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Disposisi</a>
+				</div>
+				@endif
 				@if ($submission->file_review != null)
 				<div class="p-2">
 					<a href="{{ asset('storate/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
