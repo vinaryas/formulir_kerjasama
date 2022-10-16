@@ -114,7 +114,7 @@
 		@if($register_url)
 		<p class="my-0">
 			<a href="{{ $register_url }}">
-				Daftar user baru
+				Daftar pengguna baru
 			</a> ||
 			<a href="#" data-toggle="modal" data-target="#exampleModal">
 				<span class="badge badge-dark">Lihat panduan dan draft</span>

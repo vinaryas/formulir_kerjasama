@@ -11,7 +11,7 @@
     @php( $register_url = $register_url ? url($register_url) : '' )
 @endif
 
-@section('auth_header', __('adminlte::adminlte.register_message'))
+@section('auth_header', 'Daftar sebagai pengguna baru')
 
 @section('auth_body')
 	<style>
@@ -140,7 +140,7 @@
     <center>
 		<p class="my-0">
 			<a href="{{ $login_url }}">
-				{{ __('adminlte::adminlte.i_already_have_a_membership') }}
+				{{ 'Saya sudah memiliki akun' }}
 			</a>||
 			<a href="#" data-toggle="modal" data-target="#exampleModal">
 				<span class="badge badge-dark">Lihat panduan dan draft</span>
