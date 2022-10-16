@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\StoreFile;
+use App\Http\Requests\SubmissionStoreRequest;
 use App\Services\Support\ApprovalService;
 use App\Services\Support\FormService;
 use App\Services\Support\JenisKerjasamaService;
@@ -63,7 +64,7 @@ class FormController extends Controller
         return view('Form.create', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'kategoriMitra', 'rencanaFormalisasi'));
     }
 
-    public function store(Request $request){
+    public function store(SubmissionStoreRequest $request){
         DB::beginTransaction();
 
         try{
