@@ -115,10 +115,20 @@
 			<input type="text" name="tempat" class="form-control form-control-sm">
 		</div>
 
-		<div class="form-group">
+		{{--  <div class="form-group">
 			<label>File Pengajuan Kerjasama</label>
 			<input type="file" name="file_kerjasama" class="form-control">
+		</div>  --}}
+
+        <div class="form-group">
+			<label>draft PKS</label>
+			<input type="file" name="draft_pks" class="form-control">
 		</div>
+
+        <div class="form-group">
+            <label>lembar persetujuan</label>
+            <input type="file" name="lembar_persetujuan" class="form-control">
+        </div>
 
         <div class="form-group">
             <div class="float-left">

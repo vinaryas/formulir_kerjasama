@@ -16,82 +16,100 @@
         <input type="hidden" value="{{ $forms->id }}" name="form_id">
         <input type="hidden" value="{{ $forms->role_last_app }}" name="role_last_app">
         <div class="row">
+
             <div class="col-md-6">
                 <label> Jenis Kerjasama </label>
                 <select  name="jenisKerjasama" class="form-control" readonly>
                     <option value="{{ $forms->jenis_kerjasama }}">{{ $forms->jenis_kerjasama }}</option>
                 </select>
             </div>
+
             <div class="col-md-6">
                 <label> Jenis Pengajuan </label>
                 <select  name="jenisPengajuan" class="form-control" readonly>
                     <option value="{{ $forms->jenis_pengajuan }}">{{ $forms->jenis_pengajuan }}</option>
                 </select>
             </div>
+
             <div class="col-md-6">
                 <label> Nama Mitra Kerjasama </label>
                 <input type="text" value="{{ $forms->nama_mitra_kerjasama }}" name="namaMitraKerjasama" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Alamat Mitra Kerjasama </label>
                 <input type="text" value="{{ $forms->alamat_mitra_kerjasama }}" name="alamatMitraKerjasama" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Kategori Mitra </label>
                 <select  name="kategoriMitra" class="form-control" readonly>
                     <option value="{{ $forms->kategori_mitra }}">{{ $forms->kategori_mitra }}</option>
                 </select>
             </div>
+
             <div class="col-md-6">
                 <label> PIC Mitra </label>
                 <input type="text" value="{{ $forms->pic_mitra }}" name="picMitra" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Nama </label>
                 <input type="text" value="{{ $forms->nama }}" name="nama" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Nama Unit </label>
                 <input type="text" value="{{ $forms->nama_unit }}" name="namaUnit" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Jabatan </label>
                 <input type="text" value="{{ $forms->jabatan }}" name="jabatan" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Telp/No.HP </label>
                 <input type="text" value="{{ $forms->no_telp }}" name="noTelp" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Email </label>
                 <input type="email" value="{{ $forms->email }}" name="email" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Lingkup Kerjasma </label>
                 <input type="text" value="{{ $forms->lingkup_kerjasama }}" name="lingkupKerjasama" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Rencana Kegiatan </label>
                 <input type="text" value="{{ $forms->rencana_kegiatan }}" name="rencanaKerjasama" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Rencana Formalisasi </label>
                 <select  name="rencanaFormalisasi" class="form-control" readonly>
                     <option value="{{ $forms->rencana_formalisasi }}">{{ $forms->rencana_formalisasi }}</option>
                 </select>
             </div>
+
             <div class="col-md-3">
                 <label> Tanggal </label>
                 <input type="text" value="{{ $forms->tgl }}" name="tgl" class="form-control" readonly>
             </div>
+
             <div class="col-md-3">
                 <label> Tempat </label>
                 <input type="text" value="{{ $forms->tempat }}" name="tempat" class="form-control" readonly>
             </div>
+
             <div class="col-md-6">
                 <label> Upload File: </label>
                 <input type="text" value="{{$forms->file }}" name="tempat" class="form-control" readonly>
             </div>
+
         </div>
     </div>
     <div class="card-footer">
