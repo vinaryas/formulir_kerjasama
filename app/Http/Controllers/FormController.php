@@ -42,11 +42,11 @@ class FormController extends Controller
         try{
 			$allowedfileExtension = ['pdf', 'doc', 'docx'];
 			$file = StoreFile::storeFile($request->draft_pks, config('kerjasama.file_path'), $allowedfileExtension);
-            $file = StoreFile::storeFile($request->lembar_persetujuan, config('kerjasama.lembar_persetujuan_path'), $allowedfileExtension);
+            $file_persetujuan = StoreFile::storeFile($request->lembar_persetujuan, config('kerjasama.lembar_persetujuan_path'), $allowedfileExtension);
 
 			$request->request->add([
 				'file' => $file['name'],
-                'lembar_persetujuan' => $file['name'],
+                'lembar_persetujuan' => $file_persetujuan['name'],
 			]);
 
             $storeData = FormService::store($request->except('_token', 'draft_pks', 'lembar_persetujuan'));
