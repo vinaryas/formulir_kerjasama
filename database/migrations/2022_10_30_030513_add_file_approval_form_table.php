@@ -14,7 +14,7 @@ class AddFileApprovalFormTable extends Migration
     public function up()
     {
         Schema::table('form', function (Blueprint $table) {
-            $table->string('lembar_persetujuan')->after('file');
+            $table->string('lembar_persetujuan')->nullable()->after('file');
         });
     }
 
@@ -26,7 +26,7 @@ class AddFileApprovalFormTable extends Migration
     public function down()
     {
         Schema::table('form', function (Blueprint $table) {
-            $table->removeColumn('file_approval');
+            $table->removeColumn('lembar_persetujuan');
         });
     }
 }

@@ -3,6 +3,7 @@
 @section('title', 'Approval')
 
 @section('content_header')
+<h1><b> Persetujuan Kerjasama </b></h1>
 @stop
 
 @section('content')
@@ -43,13 +44,8 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            console.log('teast');
-            $('#table').DataTable();
+            $('#t_periksa').DataTable({
+			});
         });
     </script>
-    {{-- <script>
-        $(document).ready(function(){
-            $('.js-select2').select2();
-        });
-    </script> --}}
 @stop

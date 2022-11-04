@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Form')
+@section('title', 'Review')
 
 @section('content_header')
- <h1>Data Pengajuan Kerjasama</h1>
+ <h1><b> Review </b></h1>
 @stop
 
 @section('content')

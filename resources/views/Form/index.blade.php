@@ -3,7 +3,7 @@
 @section('title', 'Form')
 
 @section('content_header')
- <h1>Data Pengajuan Kerjasama</h1>
+ <h1><b> Pengajuan Kerjasama </b></h1>
 @stop
 
 @section('content')
@@ -22,6 +22,7 @@
                     <th> Kategori Mitra </th>
                     <th> PIC Mitra </th>
                     <th> File Pengajuan </th>
+                    <th> File Persetujuan </th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,11 @@
                         <td>
 							<center>
 								<a href="{{ asset('storage/file/' . $form->file) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
+							</center>
+						</td>
+                        <td>
+							<center>
+								<a href="{{ asset('storage/lembar_persetujuan/' . $form->lembar_persetujuan) }}" class="btn btn-warning btn-sm" target="_blank"><i class="far fa-file"></i></a>
 							</center>
 						</td>
                     </tr>

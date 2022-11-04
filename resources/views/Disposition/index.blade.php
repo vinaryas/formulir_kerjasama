@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Form')
+@section('title', 'Disposisi')
 
 @section('content_header')
- <h1>Data Pengajuan Kerjasama</h1>
+ <h1><b> Disposisi Pengajuan Kerjasama </b></h1>
 @stop
 
 @section('content')
@@ -28,7 +28,6 @@
                         <td>{{ $form->jenis_kerjasama}}</td>
                         <td>{{ $form->jenis_pengajuan }}</td>
                         <td>{{ $form->nama_mitra_kerjasama }}</td>
-                        <td>{{ $form->kategori_mitra }}</td>
                         <td>{{ $form->kategori_mitra }}</td>
                         <td>{{ $form->pic_mitra }}</td>
                         <td>

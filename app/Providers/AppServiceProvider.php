@@ -100,7 +100,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
-                'text' => 'Disposition',
+                'text' => 'Disposisi',
                 'url' => route('disposition.index'),
                 'icon' => 'fas fa-file-alt',
                 'active' => ['disposition*'],

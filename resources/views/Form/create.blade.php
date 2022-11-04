@@ -121,13 +121,13 @@
 		</div>  --}}
 
         <div class="form-group">
-			<label>draft PKS</label>
+			<label>Draft PKS</label>
 			<input type="file" name="draft_pks" class="form-control">
 		</div>
 
         <div class="form-group">
-            <label>lembar persetujuan</label>
-            <input type="file" name="lembar_persetujuan" class="form-control">
+            <label>Lembar Persetujuan</label>
+            <input type="file" name="file_persetujuan" class="form-control">
         </div>
 
         <div class="form-group">
