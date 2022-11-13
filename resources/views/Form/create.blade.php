@@ -87,7 +87,12 @@
 
 		<div class="form-group">
 			<label>Lingkup Kerjasama</label>
-			<input type="text" name="lingkup_kerjasama" class="form-control form-control-sm">
+            <select  name="lingkup_kerjasama" class="form-control select2">
+				<option value=""></option>
+				@foreach ($lingkupKerjasama as $lingkup)
+				<option value="{{ $lingkup->id }}">{{ $lingkup->lingkup }}</option>
+				@endforeach
+			</select>
 		</div>
 
 		<div class="form-group">

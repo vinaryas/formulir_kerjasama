@@ -160,8 +160,16 @@ class PermissionSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-			[
+            [
                 'id' => 19,
+                'parent_id' => 14,
+                'name' => 'lingkup-kerjasama',
+                'display_name' => 'Lingkup Kerjasama',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+			[
+                'id' => 20,
                 'parent_id' => 0,
                 'name' => 'pengajuan',
                 'display_name' => 'Pengajuan Kerjasama',
@@ -169,7 +177,7 @@ class PermissionSeeder extends Seeder
                 'updated_at' => now(),
             ],
 			[
-                'id' => 20,
+                'id' => 21,
                 'parent_id' => 0,
                 'name' => 'persetujuan',
                 'display_name' => 'Persetujuan Kerjasama',
@@ -177,7 +185,7 @@ class PermissionSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => 21,
+                'id' => 22,
                 'parent_id' => 0,
                 'name' => 'disposition',
                 'display_name' => 'Disposition',
@@ -185,7 +193,7 @@ class PermissionSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => 22,
+                'id' => 23,
                 'parent_id' => 22,
                 'name' => 'surat-disposition',
                 'display_name' => 'Surat Disposition',
@@ -193,7 +201,7 @@ class PermissionSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => 23,
+                'id' => 24,
                 'parent_id' => 0,
                 'name' => 'review',
                 'display_name' => 'Review',

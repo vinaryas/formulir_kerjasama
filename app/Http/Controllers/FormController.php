@@ -11,6 +11,7 @@ use App\Services\Support\KategoriMitraService;
 use App\Services\Support\RencanaFormalisasiService;
 use App\Services\Support\RoleUserService;
 use App\Services\Support\StepKerjasamaService;
+use App\Services\Support\LingkupKerjasamaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,8 +32,9 @@ class FormController extends Controller
         $jenisPengajuan = JenisPengajuanService::all()->get();
         $kategoriMitra = KategoriMitraService::all()->get();
         $rencanaFormalisasi = RencanaFormalisasiService::all()->get();
+        $lingkupKerjasama = LingkupKerjasamaService::all()->get();
 
-        return view('Form.create', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'kategoriMitra', 'rencanaFormalisasi'));
+        return view('Form.create', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'kategoriMitra', 'rencanaFormalisasi', 'lingkupKerjasama'));
     }
 
     public function store(Request $request){

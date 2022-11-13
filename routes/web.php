@@ -81,6 +81,11 @@ Route::group(['prefix' => 'master'], function(){
     Route::post('/rencana_formalisasi', [App\Http\Controllers\RencanaFormalisasiController::class, 'store'])->name('rencanaFormalisasi.store');
     Route::get('/rencana_formalisasi/detail/{id}', [App\Http\Controllers\RencanaFormalisasiController::class, 'detail'])->name('rencanaFormalisasi.detail');
     Route::post('/rencana_formalisasi/update', [App\Http\Controllers\RencanaFormalisasiController::class, 'update'])->name('rencanaFormalisasi.update');
+
+    Route::get('/lingkup_kerjasama', [App\Http\Controllers\LingkupKerjasamaController::class, 'index'])->name('lingkup.index');
+    Route::post('/lingkup_kerjasama', [App\Http\Controllers\LingkupKerjasamaController::class, 'store'])->name('lingkup.store');
+    Route::get('/lingkup_kerjasama/detail/{id}', [App\Http\Controllers\LingkupKerjasamaController::class, 'detail'])->name('lingkup.detail');
+    Route::post('/lingkup_kerjasama/update', [App\Http\Controllers\LingkupKerjasamaController::class, 'update'])->name('lingkup.update');
 });
 
 Route::group(['prefix' => 'form'], function(){

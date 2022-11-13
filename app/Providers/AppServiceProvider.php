@@ -88,6 +88,13 @@ class AppServiceProvider extends ServiceProvider
                         'active' => ['rencanaFormalisasi.index'],
 						'permission' => 'rencana-formalisasi',
                     ],
+                    [
+                        'text' => 'Lingkup Kerjasama',
+                        'url' => route('lingkup.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['lingkup.index'],
+						'permission' => 'lingkup-kerjasama',
+                    ],
                 ],
             ]);
 

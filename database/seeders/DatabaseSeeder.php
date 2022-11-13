@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             JenisPengajuanSeeder::class,
             KategoriMitraSeeder::class,
             RencanaFormalisasiSeeder::class,
+            LingkupKerjasamaSeeder::class,
             MappingAppSeeder::class,
 		]);
     }
