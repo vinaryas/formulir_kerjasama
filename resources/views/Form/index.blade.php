@@ -44,12 +44,12 @@
 				<input type="hidden" name="id_submission" id="id_submission">
 				<input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}">
 				<div class="modal-body">
-					<p>Pengajuan anda telah selesai direview. Hasil rewiew adalah:</p><hr>
+					{{-- <p>Pengajuan anda telah selesai direview. Hasil rewiew adalah:</p><hr>
 					
 					<div id="comment-reviewer">
 						
 					</div>
-					<hr>
+					<hr> --}}
 					<p>Draft hasil review telah kami kirimkan ke email yang didaftarkan saat membuat akun. Mohon untuk memerika kembali.</p>
 					<p>
 						Jika ada perubahan atau penambahan dan hal-hal lain yang perlu didiskusikan, silahkan hubungi <strong>nama pic</strong>, dengan nomer kontak <strong>08112312312</strong>

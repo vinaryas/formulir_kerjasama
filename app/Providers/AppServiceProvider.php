@@ -71,6 +71,13 @@ class AppServiceProvider extends ServiceProvider
                         'active' => ['jenisKerjasama.index'],
 						'permission' => 'jenis-kerjasama',
                     ],
+					[
+                        'text' => 'Lingkup Kerjasama',
+                        'url' => route('lingkupKerjasama.index'),
+                        'icon' => 'far fa-circle',
+                        'active' => ['lingkupKerjasama.index'],
+						'permission' => 'lingkup-kerjasama',
+                    ],
                     [
                         'text' => __('submission.menu.master.submission_type'),
                         'url' => route('jenisPengajuan.index'),

@@ -17,6 +17,11 @@ class Form extends Model
 		return $this->hasOne(JenisKerjasama::class, 'id', 'jenis_kerjasama');
 	}
 
+	public function lingkupKerjasama()
+	{
+		return $this->hasOne(LingkupKerjasama::class, 'id', 'lingkup_kerjasama');
+	}
+
 	public function jenisPengajuan()
 	{
 		return $this->hasOne(JenisPengajuan::class, 'id', 'jenis_pengajuan');
@@ -36,6 +41,7 @@ class Form extends Model
     {
         return $query->with([
             'jenisKerjasama',
+            'lingkupKerjasama',
 			'jenisPengajuan',
 			'kategoriMitra',
 			'rencanaFormalisasi'

@@ -7,16 +7,16 @@
 @stop
 
 @section('content')
-<form class="card" action="{{ route('jenisKerjasama.update') }}" method="POST">
+<form class="card" action="{{ route('lingkupKerjasama.update') }}" method="POST">
     {{ csrf_field() }}
     <div class="card-body">
         <div class="col-md-12">
-            <input type="hidden" id="id" name="id"  value="{{ $jenisKerjasama->id }}" >
+            <input type="hidden" id="id" name="id"  value="{{ $lingkupKerjasama->id }}" >
         </div>
         <div class="row">
             <div class="col-md-12">
                 <label>Jenis Kerjasama</label>
-                <input type="text" id="kerjasama" name="kerjasama"  value="{{ $jenisKerjasama->kerjasama }}" class="form-control" required>
+                <input type="text" id="nama" name="nama"  value="{{ $lingkupKerjasama->nama }}" class="form-control" required>
             </div>
         </div>
         <br>
@@ -37,7 +37,6 @@
 @section('js')
     <script>
         $(document).ready(function () {
-            console.log('teast');
             $('#table').DataTable();
         });
     </script>

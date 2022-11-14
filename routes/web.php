@@ -72,6 +72,11 @@ Route::middleware(['auth', 'set.locale'])->group(function () {
 		Route::get('/jenis_kerjasama/detail/{id}', [App\Http\Controllers\JenisKerjasamaController::class, 'detail'])->name('jenisKerjasama.detail');
 		Route::post('/jenis_kerjasama/update', [App\Http\Controllers\JenisKerjasamaController::class, 'update'])->name('jenisKerjasama.update');
 
+		Route::get('/lingkup_kerjasama', [App\Http\Controllers\LingkupKerjasamaController::class, 'index'])->name('lingkupKerjasama.index');
+		Route::post('/lingkup_kerjasama', [App\Http\Controllers\LingkupKerjasamaController::class, 'store'])->name('lingkupKerjasama.store');
+		Route::get('/lingkup_kerjasama/detail/{id}', [App\Http\Controllers\LingkupKerjasamaController::class, 'detail'])->name('lingkupKerjasama.detail');
+		Route::post('/lingkup_kerjasama/update', [App\Http\Controllers\LingkupKerjasamaController::class, 'update'])->name('lingkupKerjasama.update');
+
 		Route::get('/jenis_pengajuan', [App\Http\Controllers\JenisPengajuanController::class, 'index'])->name('jenisPengajuan.index');
 		Route::post('/jenis_pengajuan', [App\Http\Controllers\JenisPengajuanController::class, 'store'])->name('jenisPengajuan.store');
 		Route::get('/jenis_pengajuan/detail/{id}', [App\Http\Controllers\JenisPengajuanController::class, 'detail'])->name('jenisPengajuan.detail');

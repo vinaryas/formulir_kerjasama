@@ -91,7 +91,13 @@
 
 		<div class="form-group">
 			<label>Lingkup Kerjasama*</label>
-			<input type="text" name="lingkup_kerjasama" class="form-control form-control-sm" value="{{ old('lingkup_kerjasama') }}">
+			{{-- <input type="text" name="lingkup_kerjasama" class="form-control form-control-sm" value="{{ old('lingkup_kerjasama') }}"> --}}
+			<select  name="lingkup_kerjasama" class="form-control select2">
+				<option value=""></option>
+				@foreach ($lingkupKerjasama as $lingkup)
+				<option value="{{ $lingkup->id }}" {{ (old('lingkup_kerjasama') == $lingkup->id) ? 'selected' : '' }}>{{ $lingkup->nama }}</option>
+				@endforeach
+			</select>
 		</div>
 
 		<div class="form-group">

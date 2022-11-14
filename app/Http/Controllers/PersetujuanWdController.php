@@ -25,8 +25,15 @@ class PersetujuanWdController extends Controller
 
 	public function approve(Request $request, $id)
 	{
+		$request->validate([
+			'comment' => 'required',
+		], [
+			'comment.required' => 'Mohon isi komentar sebelum menyetujui atau menolak'
+		]);
+
 		$data = [
 			'status' => config('kerjasama.code_detail.status_pengajuan.upload_disposisi'),
+			'comment' => $request->comment,
 			'approved_by' => Auth::user()->id,
 			'approved_at' => now()
 		];

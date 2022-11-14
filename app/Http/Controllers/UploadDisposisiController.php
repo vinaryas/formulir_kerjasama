@@ -27,7 +27,7 @@ class UploadDisposisiController extends Controller
 
 	public function update(UploadDispositionRequest $request, $id)
 	{
-		$allowedfileExtension = ['pdf', 'doc', 'docx'];
+		$allowedfileExtension = ['pdf'];
 		$fileDisposition = StoreFile::storeFile($request->file_disposition, config('kerjasama.file_path'), $allowedfileExtension);
 		$data = [
 			'status' => config('kerjasama.code_detail.status_pengajuan.review'),

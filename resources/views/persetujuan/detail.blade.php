@@ -7,11 +7,25 @@
 @stop
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <form class="card" action="{{ route('persetujuan.approve', $submission->id) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="card-body">
 
 		@include('disposisi.detail')
+
+		<div class="row">
+			<div class="col-md-12"><strong>Komentar:</strong></div>
+			<textarea class="ml-5 mr-5" name="comment" id="comment" style="width: 100%" required></textarea>
+		</div><hr>
 
         <div class="form-group">
             <div class="float-left">
@@ -31,6 +45,7 @@
 @stop
 
 @section('js')
+	<script src="https://cdn.tiny.cloud/1/l6crvnyyxe537svrrmuu38vxrb2scra5zp2onr04gbfz5hll/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         $(document).ready(function () {
             $('#table').DataTable();
@@ -62,6 +77,20 @@
 						});
 					}
 				})
+			});
+
+			tinymce.init({
+				selector: '#comment',
+				tinycomments_mode: 'embedded',
+				skin: 'bootstrap',
+				icons: 'bootstrap',
+				menubar: false,
+				plugins: [
+				"advlist autolink lists link image charmap print preview anchor",
+				"searchreplace visualblocks code fullscreen",
+				"insertdatetime media table contextmenu paste"
+				],
+				toolbar: 'undo redo bold italic bullist numlist',
 			});
         });
     </script>

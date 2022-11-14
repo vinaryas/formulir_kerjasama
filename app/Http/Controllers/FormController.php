@@ -10,6 +10,7 @@ use App\Services\Support\FormService;
 use App\Services\Support\JenisKerjasamaService;
 use App\Services\Support\JenisPengajuanService;
 use App\Services\Support\KategoriMitraService;
+use App\Services\Support\LingkupKerjasamaService;
 use App\Services\Support\RencanaFormalisasiService;
 use App\Services\Support\RoleUserService;
 use Illuminate\Http\Request;
@@ -59,11 +60,12 @@ class FormController extends Controller
     public function create(){
         $user = Auth::user();
         $jenisKerjasama = JenisKerjasamaService::all()->get();
+        $lingkupKerjasama = LingkupKerjasamaService::all()->get();
         $jenisPengajuan = JenisPengajuanService::all()->get();
         $kategoriMitra = KategoriMitraService::all()->get();
         $rencanaFormalisasi = RencanaFormalisasiService::all()->get();
 
-        return view('Form.create', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'kategoriMitra', 'rencanaFormalisasi'));
+        return view('Form.create', compact('user', 'jenisKerjasama', 'jenisPengajuan', 'lingkupKerjasama', 'kategoriMitra', 'rencanaFormalisasi'));
     }
 
     public function store(SubmissionStoreRequest $request){

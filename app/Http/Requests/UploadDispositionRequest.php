@@ -24,7 +24,7 @@ class UploadDispositionRequest extends FormRequest
     public function rules()
     {
         return [
-            'file_disposition' => 'required|file|mimes:doc,docx|max:1024',
+            'file_disposition' => 'required|file|mimes:pdf|max:1024',
         ];
     }
 
@@ -33,7 +33,7 @@ class UploadDispositionRequest extends FormRequest
 		return [
 			'file_disposition.required' => 'Dokumen disposisi wajib diisi',
 			'file_disposition.file' => 'Dokumen yang diupload harus berupa file',
-			'file_disposition.mimes' => 'Dokumen yang diijinkan adalah doc/docx',
+			'file_disposition.mimes' => 'Dokumen yang diijinkan adalah pdf',
 			'file_disposition.max' => 'Dokumen yang diunggah terlalu besar. Maksimal 1MB',
 		];
 	}

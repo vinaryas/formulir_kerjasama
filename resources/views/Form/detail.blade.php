@@ -63,7 +63,7 @@
 
 		<div class="row">
 			<div class="col-md-12"><strong>Lingkup Kerjasama:</strong></div>
-			<div class="col-md-12"> {{ $submission->lingkup_kerjasama }}</div>
+			<div class="col-md-12"> {{ $submission->lingkupKerjasama->nama }}</div>
 		</div><hr>
 
 		<div class="row">
