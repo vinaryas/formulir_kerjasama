@@ -80,7 +80,7 @@ class FormController extends Controller
 				'file' => $file['name'],
 				'file_perjanjian' => $filePerjanjian['name'],
 				'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_awal'),
-				'created_by' => Auth::user()->id
+				'created_by' => Auth::user()-> id
 			]);
 
             $storeData = FormService::store($request->except('_token', 'file_kerjasama', 'file_perjanjian_kerjasama'));

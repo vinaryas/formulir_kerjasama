@@ -200,6 +200,14 @@ class PermissionSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+			[
+                'id' => 24,
+                'parent_id' => 0,
+                'name' => 'review2',
+                'display_name' => 'Review 2 Kerjasama',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         Permission::upsert($permissions, ['id'], ['parent_id', 'name', 'display_name']);

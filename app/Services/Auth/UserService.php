@@ -14,7 +14,7 @@ class UserService{
         return [
                 'name' => $data['name'],
                 'username' => $data['username'],
-                'jabatan_id' => $data['jabatan_id'],
+                'role_id' => $data['role_id'],
                 'password' => Hash::make($data['password'])
         ];
     }

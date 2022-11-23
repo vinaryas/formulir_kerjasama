@@ -31,13 +31,23 @@ class ReviewController extends Controller
 			$allowedfileExtension = ['doc', 'docx'];
 			$fileReview = StoreFile::storeFile($request->file_review, config('kerjasama.file_path'), $allowedfileExtension);
 
-			$data = [
-				'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir'),
-				'reviewed_by' => Auth::user()->id,
-				'reviewed_at' => now(),
-				'comment' => $request->comment,
-				'file_review' => $fileReview['name'],
-			];
+			if($request->status == 4){
+				$data = [
+					'status' => config('kerjasama.code_detail.status_pengajuan.review2'),
+					'reviewed_by' => Auth::user()->id,
+					'reviewed_at' => now(),
+					'file_review' => $fileReview['name'],
+				];
+			}else{
+				$data = [
+					'status' => config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir'),
+					'reviewed2_by' => Auth::user()->id,
+					'reviewed2_at' => now(),
+					'file_review2' => $fileReview['name'],
+				];
+			}
+
+			
 	
 			$res = FormService::update($data, $id);
 

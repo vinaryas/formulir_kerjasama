@@ -20,6 +20,8 @@
 		</div>
 		@endif
 
+		<input type="hidden" name="status" value="{{ $submission->status }}">
+
 		@include('disposisi.detail')
 
 		<div class="row">
@@ -45,7 +47,7 @@
                 <a href="{{ route('review.index') }}" class="btn btn-danger"><i class="fas fa-times"></i> Batal </a>
             </div>
             <div class="float-right">
-                <button type="submit" class="btn btn-success" id="btn-info" {{ ($submission->status > config('kerjasama.code_detail.status_pengajuan.review')) ? 'disabled' : '' }}>
+                <button type="submit" class="btn btn-success" id="btn-info" {{ ($submission->status > config('kerjasama.code_detail.status_pengajuan.review') and $submission->status > config('kerjasama.code_detail.status_pengajuan.review2')) ? 'disabled' : '' }}>
                     <i class="fas fa-save"></i> Simpan Review
                 </button>
             </div>

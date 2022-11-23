@@ -44,6 +44,11 @@
 					<a href="{{ asset('storage/file/' . $submission->file_review) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review</a>
 				</div>
 				@endif
+				@if ($submission->file_review2 != null)
+				<div class="p-2">
+					<a href="{{ asset('storage/file/' . $submission->file_review2) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Review 2</a>
+				</div>
+				@endif
 				@if ($submission->file_disposition != null)
 				<div class="p-2">
 					<a href="{{ asset('storage/file/' . $submission->file_disposition) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Disposisi</a>
@@ -75,6 +80,9 @@
 						@endif
 						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.review') and Auth::user()->isAbleTo('review'))
 							<a class="dropdown-item" href="{{ route('review.detail', $submission->id) }}">Review</a>
+						@endif
+						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.review2') and Auth::user()->isAbleTo('review2'))
+							<a class="dropdown-item" href="{{ route('review.detail', $submission->id) }}">Review 2</a>
 						@endif
 						@if ($submission->status == config('kerjasama.code_detail.status_pengajuan.selesai'))
 							<a class="dropdown-item btn-hasil-review" href="#" data-submission-id="{{ $submission->id }}">Hasil Review</a>

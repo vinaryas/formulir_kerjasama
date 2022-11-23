@@ -134,6 +134,14 @@ class AppServiceProvider extends ServiceProvider
 				'permission' => 'review',
             ]);
 
+			$event->menu->add([
+                'text' => 'Review 2',
+                'url' => route('review.index'),
+                'icon' => 'fas fa-file-signature',
+                'active' => ['review*'],
+				'permission' => 'review2',
+            ]);
+
         });
     }
 }

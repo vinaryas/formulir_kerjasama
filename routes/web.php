@@ -129,7 +129,7 @@ Route::middleware(['auth', 'set.locale'])->group(function () {
 		Route::post('persetujuan/{id}/tolak', 'reject')->name('tolak');
 	});
 
-	Route::controller(ReviewController::class)->name('review.')->middleware(['permission:review'])->group(function(){
+	Route::controller(ReviewController::class)->name('review.')->middleware(['permission:review|review2'])->group(function(){
 		Route::get('review', 'index')->name('index');
 		Route::get('review/detail/{id}', 'detail')->name('detail');
 		Route::post('review/{id}', 'review')->name('review');
