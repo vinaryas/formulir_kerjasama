@@ -53,7 +53,7 @@
 				@endif
 				@if ($submission->file_disposition != null)
 				<div class="p-2">
-					<a href="{{ asset('storage/file/' . $submission->file_disposition) }}" target="_blank"><i class="fas fa-file-word"></i> Dokumen Disposisi</a>
+					<a href="{{ asset('storage/file/' . $submission->file_disposition) }}" target="_blank"><i class="fas fa-file-pdf"></i> Dokumen Disposisi</a>
 				</div>
 				@endif
 				@if ($submission->file_final != null)
