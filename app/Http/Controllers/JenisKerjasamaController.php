@@ -24,7 +24,7 @@ class JenisKerjasamaController extends Controller
             ];
             $store = JenisKerjasamaService::store($data);
             DB::commit();
-            return redirect()->route('JenisKerjasama.index');
+            return redirect()->route('jenisKerjasama.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -46,7 +46,7 @@ class JenisKerjasamaController extends Controller
                 ];
                 $update = JenisKerjasamaService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('JenisKerjasama.index');
+                return redirect()->route('jenisKerjasama.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -57,7 +57,7 @@ class JenisKerjasamaController extends Controller
                 ];
                 $delete = JenisKerjasamaService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('JenisKerjasama.index');
+                return redirect()->route('jenisKerjasama.index');
             }catch(\Throwable $th){
                 dd($th);
             }

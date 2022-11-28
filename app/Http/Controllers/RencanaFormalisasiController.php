@@ -24,7 +24,7 @@ class RencanaFormalisasiController extends Controller
             ];
             $store = RencanaFormalisasiService::store($data);
             DB::commit();
-            return redirect()->route('jenisKerjasama.index');
+            return redirect()->route('rencanaFormalisasi.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -47,7 +47,7 @@ class RencanaFormalisasiController extends Controller
                 ];
                 $update = RencanaFormalisasiService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('RencanaFormalisasi.index');
+                return redirect()->route('rencanaFormalisasi.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -58,7 +58,7 @@ class RencanaFormalisasiController extends Controller
                 ];
                 $delete = RencanaFormalisasiService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('RencanaFormalisasi.index');
+                return redirect()->route('rencanaFormalisasi.index');
             }catch(\Throwable $th){
                 dd($th);
             }

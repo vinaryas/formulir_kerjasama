@@ -24,7 +24,7 @@ class JenisPengajuanController extends Controller
             ];
             $store = JenisPengajuanService::store($data);
             DB::commit();
-            return redirect()->route('JenisPengajuan.index');
+            return redirect()->route('jenisPengajuan.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -46,7 +46,7 @@ class JenisPengajuanController extends Controller
                 ];
                 $update = JenisPengajuanService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('JenisPengajuan.index');
+                return redirect()->route('jenisPengajuan.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -57,7 +57,7 @@ class JenisPengajuanController extends Controller
                 ];
                 $delete = JenisPengajuanService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('JenisPengajuan.index');
+                return redirect()->route('jenisPengajuan.index');
             }catch(\Throwable $th){
                 dd($th);
             }
