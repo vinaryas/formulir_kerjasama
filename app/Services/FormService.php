@@ -52,9 +52,16 @@ class FormService
 
 	public function getReview()
 	{
+		
 		return $this->all()
-				->where('status', config('kerjasama.code_detail.status_pengajuan.review'))
-				->orWhere('status', config('kerjasama.code_detail.status_pengajuan.review2'));
+				->where('status', config('kerjasama.code_detail.status_pengajuan.review'));
+	}
+
+	public function getReview2()
+	{
+		
+		return $this->all()
+				->where('status', config('kerjasama.code_detail.status_pengajuan.review2'));
 	}
 
 	public function getDataAdmin()

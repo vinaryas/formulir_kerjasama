@@ -94,7 +94,7 @@ class UserController extends Controller
 
 		$res = $userService->saveData($request->except('_token'));
 
-		$role = App\Models\Role::find($request->jabatan_id);
+		$role = App\Models\Role::find($request->role_id);
 
 		$res->attachRole($role);
 

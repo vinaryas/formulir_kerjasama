@@ -17,6 +17,8 @@
 				<span class="badge badge-primary">Upload Disposisi</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.review'))
 				<span class="badge badge-primary">Review</span>
+				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.review2'))
+				<span class="badge badge-primary">Review2</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.pengecekan_akhir'))
 				<span class="badge badge-primary">Pengecekan Akhir</span>
 				@elseif ($submission->status == config('kerjasama.code_detail.status_pengajuan.upload_final'))

@@ -13,8 +13,14 @@ class ReviewController extends Controller
 {
     public function index()
 	{
-		$submissions = FormService::getreview()->paginate(5);
-		
+		$submission = null;
+
+		if(Auth::user()->hasRole('reviewer')){
+			$submissions = FormService::getreview()->paginate(5);
+		}elseif(Auth::user()->hasRole('reviewer2')){
+			$submissions = FormService::getreview2()->paginate(5);
+		}
+
 		return view('review.index', compact('submissions'));
 	}
 
@@ -47,15 +53,13 @@ class ReviewController extends Controller
 				];
 			}
 
-			
-	
 			$res = FormService::update($data, $id);
 
 			Alert::success('succes', 'form berhasil disimpan');
-			return redirect()->route('form.index');
+			return redirect()->route('review.index');
 		} catch (\Throwable $th) {
 			dd($th->getMessage(), $th->getTrace());
-			return redirect()->route('form.index');
+			return redirect()->route('review.index');
 		}
 	}
 }
