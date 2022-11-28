@@ -50,7 +50,7 @@
 						
 					</div>
 					<hr> --}}
-					<p>Draft hasil review telah kami kirimkan ke email yang didaftarkan saat membuat akun. Mohon untuk memerika kembali.</p>
+					<p>Draft hasil review dapat dilihat pada file terlampir. Mohon untuk memerika kembali.</p>
 					<p>
 						Jika ada perubahan atau penambahan dan hal-hal lain yang perlu didiskusikan, silahkan hubungi <strong>nama pic</strong>, dengan nomer kontak <strong>08112312312</strong>
 					</p>
