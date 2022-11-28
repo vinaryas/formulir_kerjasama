@@ -11,7 +11,7 @@ class KategoriMitraController extends Controller
     public function index(){
         $kategoriMitra = KategoriMitraService::all()->get();
 
-        return view('kategoriMitra.index', compact('kategoriMitra'));
+        return view('KategoriMitra.index', compact('kategoriMitra'));
     }
 
     public function store(Request $request){
@@ -24,7 +24,7 @@ class KategoriMitraController extends Controller
             ];
             $store = KategoriMitraService::store($data);
             DB::commit();
-            return redirect()->route('kategoriMitra.index');
+            return redirect()->route('KategoriMitra.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -33,7 +33,7 @@ class KategoriMitraController extends Controller
     public function detail($id){
         $kategoriMitra = KategoriMitraService::getById($id)->first();
 
-        return view('kategoriMitra.detail', compact('kategoriMitra'));
+        return view('KategoriMitra.detail', compact('kategoriMitra'));
     }
 
     public function update(Request $request){
@@ -46,7 +46,7 @@ class KategoriMitraController extends Controller
                 ];
                 $update = KategoriMitraService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('kategoriMitra.index');
+                return redirect()->route('KategoriMitra.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -57,7 +57,7 @@ class KategoriMitraController extends Controller
                 ];
                 $delete = KategoriMitraService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('kategoriMitra.index');
+                return redirect()->route('KategoriMitra.index');
             }catch(\Throwable $th){
                 dd($th);
             }

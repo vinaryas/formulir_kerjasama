@@ -11,7 +11,7 @@ class RencanaFormalisasiController extends Controller
     public function index(){
         $rencanaFormalisasi = RencanaFormalisasiService::all()->get();
 
-        return view('rencanaFormalisasi.index', compact('rencanaFormalisasi'));
+        return view('RencanaFormalisasi.index', compact('rencanaFormalisasi'));
     }
 
     public function store(Request $request){
@@ -33,7 +33,7 @@ class RencanaFormalisasiController extends Controller
     public function detail($id){
         $rencanaFormalisasi = RencanaFormalisasiService::getById($id)->first();
 
-        return view('rencanaFormalisasi.detail', compact('rencanaFormalisasi'));
+        return view('RencanaFormalisasi.detail', compact('rencanaFormalisasi'));
     }
 
     public function update(Request $request){
@@ -47,7 +47,7 @@ class RencanaFormalisasiController extends Controller
                 ];
                 $update = RencanaFormalisasiService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('rencanaFormalisasi.index');
+                return redirect()->route('RencanaFormalisasi.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -58,7 +58,7 @@ class RencanaFormalisasiController extends Controller
                 ];
                 $delete = RencanaFormalisasiService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('rencanaFormalisasi.index');
+                return redirect()->route('RencanaFormalisasi.index');
             }catch(\Throwable $th){
                 dd($th);
             }

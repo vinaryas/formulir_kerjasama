@@ -11,7 +11,7 @@ class JenisKerjasamaController extends Controller
     public function index(){
         $jenisKerjasama = JenisKerjasamaService::all()->get();
 
-        return view('jenisKerjasama.index', compact('jenisKerjasama'));
+        return view('JenisKerjasama.index', compact('jenisKerjasama'));
     }
 
     public function store(Request $request){
@@ -24,7 +24,7 @@ class JenisKerjasamaController extends Controller
             ];
             $store = JenisKerjasamaService::store($data);
             DB::commit();
-            return redirect()->route('jenisKerjasama.index');
+            return redirect()->route('JenisKerjasama.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -33,7 +33,7 @@ class JenisKerjasamaController extends Controller
     public function detail($id){
         $jenisKerjasama = JenisKerjasamaService::getById($id)->first();
 
-        return view('jenisKerjasama.detail', compact('jenisKerjasama'));
+        return view('JenisKerjasama.detail', compact('jenisKerjasama'));
     }
 
     public function update(Request $request){
@@ -46,7 +46,7 @@ class JenisKerjasamaController extends Controller
                 ];
                 $update = JenisKerjasamaService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('jenisKerjasama.index');
+                return redirect()->route('JenisKerjasama.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -57,7 +57,7 @@ class JenisKerjasamaController extends Controller
                 ];
                 $delete = JenisKerjasamaService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('jenisKerjasama.index');
+                return redirect()->route('JenisKerjasama.index');
             }catch(\Throwable $th){
                 dd($th);
             }

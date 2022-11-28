@@ -11,7 +11,7 @@ class LingkupKerjasamaController extends Controller
     public function index(){
         $lingkupKerjasama = LingkupKerjasamaService::all()->get();
 
-        return view('lingkupKerjasama.index', compact('lingkupKerjasama'));
+        return view('LingkupKerjasama.index', compact('lingkupKerjasama'));
     }
 
     public function store(Request $request){
@@ -24,7 +24,7 @@ class LingkupKerjasamaController extends Controller
             ];
             $store = LingkupKerjasamaService::store($data);
             DB::commit();
-            return redirect()->route('lingkupKerjasama.index');
+            return redirect()->route('LingkupKerjasama.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -33,7 +33,7 @@ class LingkupKerjasamaController extends Controller
     public function detail($id){
         $lingkupKerjasama = LingkupKerjasamaService::getById($id)->first();
 
-        return view('lingkupKerjasama.detail', compact('lingkupKerjasama'));
+        return view('LingkupKerjasama.detail', compact('lingkupKerjasama'));
     }
 
     public function update(Request $request){
@@ -46,7 +46,7 @@ class LingkupKerjasamaController extends Controller
                 ];
                 $update = LingkupKerjasamaService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('lingkupKerjasama.index');
+                return redirect()->route('LingkupKerjasama.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -57,7 +57,7 @@ class LingkupKerjasamaController extends Controller
                 ];
                 $delete = LingkupKerjasamaService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('lingkupKerjasama.index');
+                return redirect()->route('LingkupKerjasama.index');
             }catch(\Throwable $th){
                 dd($th);
             }

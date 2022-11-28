@@ -11,7 +11,7 @@ class JenisPengajuanController extends Controller
     public function index(){
         $jenisPengajuan = JenisPengajuanService::all()->get();
 
-        return view('jenisPengajuan.index', compact('jenisPengajuan'));
+        return view('JenisPengajuan.index', compact('jenisPengajuan'));
     }
 
     public function store(Request $request){
@@ -24,7 +24,7 @@ class JenisPengajuanController extends Controller
             ];
             $store = JenisPengajuanService::store($data);
             DB::commit();
-            return redirect()->route('jenisPengajuan.index');
+            return redirect()->route('JenisPengajuan.index');
         }catch(\Throwable $th){
             dd($th);
         }
@@ -33,7 +33,7 @@ class JenisPengajuanController extends Controller
     public function detail($id){
         $jenisPengajuan = JenisPengajuanService::getById($id)->first();
 
-        return view('jenisPengajuan.detail', compact('jenisPengajuan'));
+        return view('JenisPengajuan.detail', compact('jenisPengajuan'));
     }
 
     public function update(Request $request){
@@ -46,7 +46,7 @@ class JenisPengajuanController extends Controller
                 ];
                 $update = JenisPengajuanService::update($data, $request->id);
                 DB::commit();
-                return redirect()->route('jenisPengajuan.index');
+                return redirect()->route('JenisPengajuan.index');
             }catch(\Throwable $th){
                 dd($th);
             }
@@ -57,7 +57,7 @@ class JenisPengajuanController extends Controller
                 ];
                 $delete = JenisPengajuanService::delete($data, $request->id);
                 DB::commit();
-                return redirect()->route('jenisPengajuan.index');
+                return redirect()->route('JenisPengajuan.index');
             }catch(\Throwable $th){
                 dd($th);
             }
