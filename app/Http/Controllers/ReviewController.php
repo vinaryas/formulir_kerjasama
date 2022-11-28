@@ -13,7 +13,7 @@ class ReviewController extends Controller
 {
     public function index()
 	{
-		$submission = null;
+		$submissions = null;
 
 		if(Auth::user()->hasRole('reviewer')){
 			$submissions = FormService::getreview()->paginate(5);
